@@ -1,4 +1,5 @@
 vim.opt.number = true
+vim.opt.swapfile = false
 
 vim.cmd("colorscheme kanagawa")
 
