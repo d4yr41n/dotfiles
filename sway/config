@@ -4,13 +4,13 @@ input * {
     xkb_options grp:alt_shift_toggle
 }
 
-output * bg ~/wallpapers/moon.png fill
+output * bg ~/wallpapers/db.png fit #FFFFFF
 
 bar {
     position top
     status_command while ~/.config/sway/bar.sh; do sleep 5; done
-    font FantasqueSansM Nerd Font 21
-    workspace_min_width 38
+    font FantasqueSansM Nerd Font 19
+    workspace_min_width 37
     colors {
         statusline #ffffff
         background #000000
