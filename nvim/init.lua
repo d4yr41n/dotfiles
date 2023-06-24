@@ -10,6 +10,8 @@ require("packer").startup(function(use)
   use "neovim/nvim-lspconfig"
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
+  use "L3MON4D3/LuaSnip"
+  use "saadparwaiz1/cmp_luasnip"
   use {
     "nvim-telescope/telescope.nvim", tag = "0.1.1",
     requires = {"nvim-lua/plenary.nvim"}
@@ -20,18 +22,23 @@ require("lualine").setup()
 require("nvim-tree").setup()
 require("telescope").setup()
 
-
 local cmp = require("cmp")
 cmp.setup {
+  snippet = {
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
+    end
+  },
   mapping = cmp.mapping.preset.insert {
-    ['<Tab>'] = cmp.mapping.confirm { select = true }
+    ["<Tab>"] = cmp.mapping.confirm { select = true }
   },
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
   sources = {
-    { name = "nvim_lsp" }
+    { name = "nvim_lsp" },
+    { name = 'luasnip' }
   },
   completion = {
     completeopt = 'menu,menuone,noinsert'
