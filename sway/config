@@ -4,22 +4,24 @@ input * {
     xkb_options grp:alt_shift_toggle
 }
 
-output * bg ~/wallpapers/db.png fit #FFFFFF
+output * bg #000000 solid_color
 
 bar {
     position top
     status_command while ~/.config/sway/bar.sh; do sleep 5; done
     font FantasqueSansM Nerd Font 19
-    workspace_min_width 37
+    workspace_min_width 34
     colors {
-        statusline #ffffff
+        statusline #7FFF7F
         background #000000
-	focused_workspace #FFFFFF #FFFFFF #000000
-	inactive_workspace #000000 #000000 #FFFFFF
+	focused_workspace #7FFF7F #000000 #7FFF7F
+	inactive_workspace #000000 #000000 #7FFF7F
     }
 }
 
-client.focused #8800FF #8800FF #FFFFFF #FFFFFF
+client.focused #7FFF7F #7FFF7F #000000 #7FFF7F
+client.focused_inactive #000000 #000000 #7FFF7F #000000
+client.unfocused #000000 #000000 #7FFF7F #000000
 
 
 floating_modifier Mod4
@@ -30,7 +32,7 @@ bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 bindsym Mod4+Shift+Return exec wezterm
 
-default_border pixel 4
+default_border pixel
 
 gaps inner 32
 
@@ -39,7 +41,7 @@ smart_borders on
 bindsym Print exec grim ~/screenshots/$(date +%s).png
 
 bindsym Mod4+Shift+c kill
-bindsym Mod4+p exec bemenu-run --fn "FantasqueSansM Nerd Font 21" -H 38
+bindsym Mod4+p exec bemenu-run --fn "FantasqueSansM Nerd Font 19" -H 34
 bindsym Mod4+Shift+r reload
 bindsym Mod4+Shift+q exit
 bindsym Mod4+h focus left
@@ -87,44 +89,19 @@ bindsym Mod4+Shift+0 move container to workspace number 10
 bindsym Mod4+b splith
 bindsym Mod4+v splitv
 
-# Switch the current container between different layout styles
-bindsym Mod4+s layout stacking
-bindsym Mod4+w layout tabbed
-bindsym Mod4+e layout toggle split
+#bindsym Mod4+s layout stacking
+#bindsym Mod4+w layout tabbed
+#bindsym Mod4+e layout toggle split
 
-# Make the current focus fullscreen
 bindsym Mod4+f fullscreen
 
-# Toggle the current focus between tiling and floating mode
 bindsym Mod4+Shift+space floating toggle
 
-# Swap focus between the tiling area and the floating area
 bindsym Mod4+space focus mode_toggle
 
-# Move focus to the parent container
 bindsym Mod4+a focus parent
 
 bindsym Mod4+Shift+minus move scratchpad
 
 bindsym Mod4+minus scratchpad show
-
-mode "resize" {
-    bindsym h resize shrink width 10px
-    bindsym j resize grow height 10px
-    bindsym k resize shrink height 10px
-    bindsym l resize grow width 10px
-
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym Mod4+r mode "resize"
-
-exec gentoo-pipewire-launcher &
 

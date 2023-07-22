@@ -1,6 +1,10 @@
 vim.opt.number = true
 vim.opt.swapfile = false
 
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+
 vim.cmd("colorscheme kanagawa")
 
 require("packer").startup(function(use)
@@ -46,6 +50,7 @@ cmp.setup {
   }
 }
 
+
 require("lspconfig").pyright.setup {
   capabilities = require("cmp_nvim_lsp").default_capabilities(),
   settings = {
@@ -56,4 +61,5 @@ require("lspconfig").pyright.setup {
     }
   }
 }
+require("lspconfig").tsserver.setup {}
 

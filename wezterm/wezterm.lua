@@ -1,8 +1,27 @@
 local wezterm = require 'wezterm'
-local config = {}
 
-config.font = wezterm.font 'FantasqueSansM Nerd Font'
-config.font_size = 19
-config.window_background_opacity = 0.5
+local config = {
+    font = wezterm.font 'FantasqueSansM Nerd Font',
+    font_size = 19,
+
+    colors = {
+        background = "#000000",
+        foreground = "#7FFF7F",
+
+        cursor_bg = "#7FFF7F",
+        cursor_fg = "#000000",
+        cursor_border = "#7FFF7F",
+
+        selection_bg = "#7FFF7F",
+        selection_fg = "#000000",
+    },
+
+    hide_tab_bar_if_only_one_tab = true,
+
+    default_cursor_style = "SteadyUnderline",
+
+    --window_background_opacity = 0.5 
+}
 
 return config
+
