@@ -20,7 +20,7 @@ local config = {
 
     default_cursor_style = "SteadyUnderline",
 
-    --window_background_opacity = 0.5 
+    window_background_opacity = 0.5 
 }
 
 return config

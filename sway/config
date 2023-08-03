@@ -4,7 +4,7 @@ input * {
     xkb_options grp:alt_shift_toggle
 }
 
-output * bg #000000 solid_color
+output * bg ~/wallpapers/db.png fit #000000
 
 bar {
     position top
