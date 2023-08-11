@@ -4,7 +4,9 @@ input * {
     xkb_options grp:alt_shift_toggle
 }
 
-output * bg ~/wallpapers/db.png fit #000000
+output * bg #000000 solid_color
+
+exec ~/.config/sway/split
 
 bar {
     position top
@@ -13,7 +15,7 @@ bar {
     workspace_min_width 34
     colors {
         statusline #7FFF7F
-        background #000000
+        background #00000000
 	focused_workspace #7FFF7F #000000 #7FFF7F
 	inactive_workspace #000000 #000000 #7FFF7F
     }
@@ -34,7 +36,7 @@ bindsym Mod4+Shift+Return exec wezterm
 
 default_border pixel
 
-gaps inner 32
+# gaps inner 32
 
 smart_borders on
 
@@ -44,26 +46,18 @@ bindsym Mod4+Shift+c kill
 bindsym Mod4+p exec bemenu-run --fn "FantasqueSansM Nerd Font 19" -H 34
 bindsym Mod4+Shift+r reload
 bindsym Mod4+Shift+q exit
+
+
 bindsym Mod4+h focus left
 bindsym Mod4+j focus down
 bindsym Mod4+k focus up
 bindsym Mod4+l focus right
 
-bindsym Mod4+Left focus left
-bindsym Mod4+Down focus down
-bindsym Mod4+Up focus up
-bindsym Mod4+Right focus right
-
-# Move the focused window with the same, but add Shift
 bindsym Mod4+Shift+h move left
 bindsym Mod4+Shift+j move down
 bindsym Mod4+Shift+k move up
 bindsym Mod4+Shift+l move right
-# Ditto, with arrow keys
-bindsym Mod4+Shift+Left move left
-bindsym Mod4+Shift+Down move down
-bindsym Mod4+Shift+Up move up
-bindsym Mod4+Shift+Right move right
+
 
 bindsym Mod4+1 workspace number 1
 bindsym Mod4+2 workspace number 2
@@ -85,13 +79,6 @@ bindsym Mod4+Shift+7 move container to workspace number 7
 bindsym Mod4+Shift+8 move container to workspace number 8
 bindsym Mod4+Shift+9 move container to workspace number 9
 bindsym Mod4+Shift+0 move container to workspace number 10
-
-bindsym Mod4+b splith
-bindsym Mod4+v splitv
-
-#bindsym Mod4+s layout stacking
-#bindsym Mod4+w layout tabbed
-#bindsym Mod4+e layout toggle split
 
 bindsym Mod4+f fullscreen
 

@@ -16,4 +16,3 @@ fi
 sep="\uE0B3"
 
 printf "$sep $network $sep 󰻠 $cpu $sep 󰍛 $free/$used $sep 󱐋 $battery $sep $time "
-

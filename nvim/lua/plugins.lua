@@ -8,12 +8,28 @@ require("packer").startup(function(use)
     use {
         "nvim-lualine/lualine.nvim",
         requires = "nvim-tree/nvim-web-devicons",
-        config = function() require("lualine").setup() end
+        config = function() require("lualine").setup {
+            options = { 
+                disabled_filetypes = { "NvimTree" }
+            }
+        } end
+    }
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        config = function() require("nvim-treesitter.configs").setup {
+            highlight = { enable = true }
+        } end
     }
     use {
         'akinsho/bufferline.nvim',
         requires = "nvim-tree/nvim-web-devicons",
-	    config = function() require("bufferline").setup() end
+	    config = function() require("bufferline").setup {
+            options = {
+                offsets = {
+                    { filetype = "NvimTree" }
+                }
+            }
+        } end
     }
     use {
         "nvim-tree/nvim-tree.lua",

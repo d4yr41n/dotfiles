@@ -1,0 +1,26 @@
+#!/usr/bin/python
+
+
+from i3ipc import Connection, Event
+
+
+def split(sway: Connection, _) -> None:
+    window = sway.get_tree().find_focused()
+    width = window.rect.width
+    height = window.rect.height
+    if width >= height:
+        sway.command("splith")
+    else:
+        sway.command("splitv")
+
+
+def main() -> None:
+    sway = Connection()
+    sway.on(Event.WINDOW_CLOSE, split)
+    sway.on(Event.WINDOW_NEW, split)
+    sway.main()
+
+
+if __name__ == "__main__":
+    main()
+
