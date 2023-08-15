@@ -4,9 +4,9 @@ input * {
     xkb_options grp:alt_shift_toggle
 }
 
-output * bg ~/wallpapers/db.png fit #000000
+output * bg #000000 solid_color
 
-exec ~/.config/sway/split
+# exec ~/.config/sway/split
 
 bar {
     position top
@@ -14,16 +14,16 @@ bar {
     font FantasqueSansM Nerd Font 19
     workspace_min_width 34
     colors {
-        statusline #7FFF7F
+        statusline #7F7FFF
         background #00000000
-	focused_workspace #7FFF7F #000000 #7FFF7F
-	inactive_workspace #000000 #000000 #7FFF7F
+	focused_workspace #7F7FFF #000000 #7F7FFF
+	inactive_workspace #000000 #000000 #7F7FFF
     }
 }
 
-client.focused #7FFF7F #7FFF7F #000000 #7FFF7F
-client.focused_inactive #000000 #000000 #7FFF7F #000000
-client.unfocused #000000 #000000 #7FFF7F #000000
+client.focused #7F7FFF #7F7FFF #000000 #7F7FFF
+client.focused_inactive #000000 #000000 #7F7FFF #000000
+client.unfocused #000000 #000000 #7F7FFF #000000
 
 
 floating_modifier Mod4

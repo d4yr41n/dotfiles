@@ -6,13 +6,13 @@ local config = {
 
     colors = {
         background = "#000000",
-        foreground = "#7FFF7F",
+        foreground = "#7F7FFF",
 
-        cursor_bg = "#7FFF7F",
+        cursor_bg = "#7F7FFF",
         cursor_fg = "#000000",
-        cursor_border = "#7FFF7F",
+        cursor_border = "#7F7FFF",
 
-        selection_bg = "#7FFF7F",
+        selection_bg = "#7F7FFF",
         selection_fg = "#000000",
     },
 

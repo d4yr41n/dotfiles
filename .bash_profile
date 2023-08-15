@@ -1,5 +1,5 @@
-printf -v left "\uE0B3"
-printf -v right "\uE0B1"
+left="("
+right=")"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
@@ -10,7 +10,7 @@ venv() {
     fi
 }
 
-export PS1="\$(venv)$left\u$right $left\w$right "
+export PS1="\$(venv)$left \u in \h $right $left \w $right\nλ "
 
 export PATH=$PATH:~/.local/bin
 

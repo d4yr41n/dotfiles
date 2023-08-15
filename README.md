@@ -14,5 +14,5 @@ Then enter nvim and type
 :PackerCompile
 ```
 
-![screenshot](screenshot.png)
+![screenshot](screenshot-new.png)
 
