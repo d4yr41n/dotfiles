@@ -6,7 +6,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 venv() {
     if test -n "$VIRTUAL_ENV"
     then
-        echo "$left${VIRTUAL_ENV##*/}$right "
+        echo "$left $(basename $VIRTUAL_ENV) $right "
     fi
 }
 
