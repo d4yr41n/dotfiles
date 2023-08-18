@@ -8,11 +8,12 @@ cpu=$(top -bn 1 | awk '{print $2}' | head -3 | tail -1)
 
 if [ ! $connection ]
 then
-  network="󰖪 "
+  network="no"
 else
-  network="󰖩  $connection"
+  network="$connection"
 fi
 
-sep="\uE0B3"
+sep="|"
 
-printf "$sep $network $sep 󰻠 $cpu $sep 󰍛 $free/$used $sep 󱐋 $battery "
+printf "$sep NET: $network $sep CPU: $cpu $sep RAM: $free/$used $sep BAT: $battery "
+

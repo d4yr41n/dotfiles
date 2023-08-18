@@ -6,24 +6,24 @@ input * {
 
 output * bg #000000 solid_color
 
-# exec ~/.config/sway/split
+exec ~/.config/sway/split
 
 bar {
     position top
     status_command while ~/.config/sway/bar.sh; do sleep 5; done
-    font FantasqueSansM Nerd Font 19
-    workspace_min_width 34
+    font Fantasque Sans Mono 19
+    workspace_min_width 35
     colors {
-        statusline #7F7FFF
+        statusline #FF007F
         background #00000000
-	focused_workspace #7F7FFF #000000 #7F7FFF
-	inactive_workspace #000000 #000000 #7F7FFF
+	focused_workspace #FF007F #000000 #FF007F
+	inactive_workspace #000000 #000000 #FF007F
     }
 }
 
-client.focused #7F7FFF #7F7FFF #000000 #7F7FFF
-client.focused_inactive #000000 #000000 #7F7FFF #000000
-client.unfocused #000000 #000000 #7F7FFF #000000
+client.focused #FF007F #FF007F #000000 #FF007F
+client.focused_inactive #000000 #000000 #FF007F #000000
+client.unfocused #000000 #000000 #FF007F #000000
 
 
 floating_modifier Mod4
@@ -32,18 +32,27 @@ bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
-bindsym Mod4+Shift+Return exec wezterm
+bindsym Mod4+Shift+Return exec alacritty
 
 default_border pixel
 
-# gaps inner 32
+gaps inner 32
 
 smart_borders on
+
+xwayland disable
 
 bindsym Print exec grim ~/screenshots/$(date +%s).png
 
 bindsym Mod4+Shift+c kill
-bindsym Mod4+p exec bemenu-run --fn "FantasqueSansM Nerd Font 19" -H 34
+bindsym Mod4+p exec bemenu-run --fn "Fantasque Sans Mono 19" -p ">>>" -H 35 \
+--hb "#000000" --hf "#FF007F" \
+--fb "#000000" --ff "#FF007F" \
+--cb "#000000" --cf "#000000" \
+--nb "#000000" --nf "#7F7F7F" \
+--tb "#000000" --tf "#FF007F" \
+--ab "#000000" --af "#7F7F7F"
+
 bindsym Mod4+Shift+r reload
 bindsym Mod4+Shift+q exit
 

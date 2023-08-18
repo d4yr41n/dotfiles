@@ -1,10 +1,12 @@
 require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
+    --[[
     use {
-        "rebelot/kanagawa.nvim",
+        "nyoom-engineering/oxocarbon.nvim",
         requires = "nvim-tree/nvim-web-devicons",
-        config = function() vim.cmd("colorscheme kanagawa") end
+        config = function() vim.cmd("colorscheme oxocarbon") end
     }
+    ]]--
     use {
         "nvim-lualine/lualine.nvim",
         requires = "nvim-tree/nvim-web-devicons",
@@ -20,6 +22,7 @@ require("packer").startup(function(use)
             highlight = { enable = true }
         } end
     }
+    --[[
     use {
         'akinsho/bufferline.nvim',
         requires = "nvim-tree/nvim-web-devicons",
@@ -36,6 +39,7 @@ require("packer").startup(function(use)
         requires = "nvim-tree/nvim-web-devicons",
     	config = function() require("nvim-tree").setup() end
     }
+    ]]--
     use {
 	    "neovim/nvim-lspconfig",
 	    requires = {
