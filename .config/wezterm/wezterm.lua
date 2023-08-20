@@ -1,18 +1,18 @@
 local wezterm = require 'wezterm'
 
 local config = {
-    font = wezterm.font 'FantasqueSansM Nerd Font',
+    font = wezterm.font 'Fantasque Sans Mono',
     font_size = 19,
 
     colors = {
         background = "#000000",
-        foreground = "#7F7FFF",
+        foreground = "#7FFF7F",
 
-        cursor_bg = "#7F7FFF",
+        cursor_bg = "#7FFF7F",
         cursor_fg = "#000000",
-        cursor_border = "#7F7FFF",
+        cursor_border = "#7FFF7F",
 
-        selection_bg = "#7F7FFF",
+        selection_bg = "#7FFF7F",
         selection_fg = "#000000",
     },
 
@@ -20,7 +20,7 @@ local config = {
 
     default_cursor_style = "SteadyUnderline",
 
-    window_background_opacity = 0.5 
+    window_background_opacity = 0.3
 }
 
 return config

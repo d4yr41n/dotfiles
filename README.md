@@ -10,9 +10,8 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 Then enter nvim and type
 
 ```
-:PackerInstall
-:PackerCompile
+:PackerSync
 ```
 
-![screenshot](screenshot-new.png)
+![screenshot](screenshots/screenshot-new.png)
 

@@ -1,12 +1,13 @@
 require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
-    --[[
     use {
-        "nyoom-engineering/oxocarbon.nvim",
+        "rebelot/kanagawa.nvim",
         requires = "nvim-tree/nvim-web-devicons",
-        config = function() vim.cmd("colorscheme oxocarbon") end
+        config = function()
+            vim.cmd("colorscheme kanagawa")
+            require("nvim-web-devicons").setup {}
+        end
     }
-    ]]--
     use {
         "nvim-lualine/lualine.nvim",
         requires = "nvim-tree/nvim-web-devicons",
