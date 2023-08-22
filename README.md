@@ -13,5 +13,5 @@ Then enter nvim and type
 :PackerSync
 ```
 
-![screenshot](./screenshots/screenshot-new.png)
+![screenshot](screenshots/screenshot-arch.png)
 
