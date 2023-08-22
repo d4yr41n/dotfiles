@@ -1,0 +1,35 @@
+riverctl map normal Super Escape exit
+riverctl map normal Super+Shift Return spawn alacritty
+riverctl map normal Super Return zoom
+riverctl map normal Super P spawn bemenu-run
+riverctl map normal Alt F4 close
+
+riverctl map-pointer normal Super BTN_LEFT move-view
+riverctl map-pointer normal Super BTN_RIGHT resize-view
+
+riverctl background-color 0x000000
+riverctl border-color-focused 0x7FFF7F
+riverctl border-color-unfocused 0x7F7F7F
+
+riverctl map normal Super Space toggle-float
+riverctl map normal Super F toggle-fullscreen
+
+riverctl focus-follows-cursor normal
+
+riverctl map normal None Print spawn "grim ~/screenshots/$(date +%s).png"
+
+riverctl map normal Super J focus-view next
+riverctl map normal Super K focus-view previous
+
+riverctl map normal Super+Shift J swap next
+riverctl map normal Super+Shift K swap previous
+
+riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1"
+riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
+
+riverctl default-layout rivertile
+rivertile -outer-padding 0 -view-padding 0 &
+
+eww daemon &
+eww open bar &
+

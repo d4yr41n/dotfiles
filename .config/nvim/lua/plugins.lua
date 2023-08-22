@@ -1,18 +1,20 @@
 require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
     use {
-        "rebelot/kanagawa.nvim",
-        requires = "nvim-tree/nvim-web-devicons",
+        -- "rebelot/kanagawa.nvim",
+        "daschw/leaf.nvim",
         config = function()
-            vim.cmd("colorscheme kanagawa")
-            require("nvim-web-devicons").setup {}
+            require("leaf").setup {
+                contrast = "high"
+            }
+            vim.cmd("colorscheme leaf")
         end
     }
     use {
         "nvim-lualine/lualine.nvim",
-        requires = "nvim-tree/nvim-web-devicons",
         config = function() require("lualine").setup {
             options = { 
+                icons_enabled = false,
                 disabled_filetypes = { "NvimTree" }
             }
         } end

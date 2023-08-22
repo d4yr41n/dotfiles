@@ -45,13 +45,7 @@ xwayland disable
 bindsym Print exec grim ~/screenshots/$(date +%s).png
 
 bindsym Mod4+Shift+c kill
-bindsym Mod4+p exec bemenu-run --fn "Fantasque Sans Mono 19" -p ">>>" -H 35 \
---hb "#000000" --hf "#FF007F" \
---fb "#000000" --ff "#FF007F" \
---cb "#000000" --cf "#000000" \
---nb "#000000" --nf "#7F7F7F" \
---tb "#000000" --tf "#FF007F" \
---ab "#000000" --af "#7F7F7F"
+bindsym Mod4+p exec bemenu-run
 
 bindsym Mod4+Shift+r reload
 bindsym Mod4+Shift+q exit
