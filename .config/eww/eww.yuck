@@ -1,12 +1,34 @@
-(defpoll time :interval "1s"
-  "date +%H:%M")
+(defpoll time
+    :interval "10s"
+    "date +%H:%M")
+
+(deflisten tag "ristate -t")
+
+(defwidget center [] (box))
+
+
+(defwidget left []
+    (box "TAG: ${tag.tags.AUOptronics[0]}"))
+
+
+(defwidget right []
+    (box
+        (box "RAM: ${round(EWW_RAM.used_mem_perc, 0)}%")
+        (box "BAT: ${EWW_BATTERY.BAT0.capacity}%")
+        time))
+
+(defwidget status []
+    (box
+        (left)
+        (center)
+        (right)))
 
 (defwindow bar
     :monitor 0
-    :geometry (geometry :x 0
-        :y 0
+    :geometry (geometry
         :width "100%"
         :height "39px"
-	:anchor "top center")
+	    :anchor "top center")
     :exclusive true
-    (box time))
+    (status))
+

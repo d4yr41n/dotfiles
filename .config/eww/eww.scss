@@ -1,10 +1,15 @@
 * {
-  all: unset
+    all: unset
 }
 
 .bar {
     background-color: #000;
     border: 2px solid #7FFF7F;
     color: #7FFF7F;
-    font: 25px Fantasque Sans Mono
+    font: 25px Fantasque Sans Mono;
 }
+
+.progressbar > .trough {
+    min-width: 10px
+}
+

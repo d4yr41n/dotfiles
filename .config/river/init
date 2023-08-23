@@ -18,6 +18,8 @@ riverctl focus-follows-cursor normal
 
 riverctl map normal None Print spawn "grim ~/screenshots/$(date +%s).png"
 
+riverctl map normal Super G spawn chromium
+
 riverctl map normal Super J focus-view next
 riverctl map normal Super K focus-view previous
 
@@ -26,6 +28,24 @@ riverctl map normal Super+Shift K swap previous
 
 riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1"
 riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
+
+riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
+
+for i in $(seq 1 9)
+do
+    tags=$((1 << ($i - 1)))
+
+    riverctl map normal Super $i set-focused-tags $tags
+
+    riverctl map normal Super+Shift $i set-view-tags $tags
+
+    riverctl map normal Super+Control $i toggle-focused-tags $tags
+
+    riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
+done
+
+riverctl keyboard-layout -options grp:alt_shift_toggle us,ru
 
 riverctl default-layout rivertile
 rivertile -outer-padding 0 -view-padding 0 &
