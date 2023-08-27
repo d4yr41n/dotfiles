@@ -3,13 +3,14 @@
 }
 
 .bar {
-    background-color: #000;
-    border: 2px solid #7FFF7F;
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: 2px solid #7FFF7F;
     color: #7FFF7F;
-    font: 25px Fantasque Sans Mono;
+    font: 30px FantasqueSansM Nerd Font;
 }
 
-.progressbar > .trough {
-    min-width: 10px
+.focused {
+    background-color: #7FFF7F;
+    color: #000
 }
 

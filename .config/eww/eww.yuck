@@ -4,23 +4,25 @@
 
 (deflisten tag "ristate -t")
 
-(defwidget center [] (box))
-
-
 (defwidget left []
-    (box "TAG: ${tag.tags.AUOptronics[0]}"))
+    (box
+        (for i in "[1, 2, 3, 4, 5, 6, 7, 8, 9]"
+            (box
+                :class {arraylength(search(tag.tags.AUOptronics, i)) > 0 ? "focused" : ""}
+                i))))
 
 
 (defwidget right []
     (box
-        (box "RAM: ${round(EWW_RAM.used_mem_perc, 0)}%")
-        (box "BAT: ${EWW_BATTERY.BAT0.capacity}%")
+        (box "  ${round(EWW_RAM.used_mem_perc, 0)}%")
+        (box "󱐋 ${EWW_BATTERY.BAT0.capacity}%")
         time))
 
 (defwidget status []
     (box
         (left)
-        (center)
+        (box)
+        (box)
         (right)))
 
 (defwindow bar

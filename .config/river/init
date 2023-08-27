@@ -32,6 +32,8 @@ riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
 riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
 riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
 
+riverctl input $(riverctl list-inputs | grep -i touchpad) tap enabled
+
 for i in $(seq 1 9)
 do
     tags=$((1 << ($i - 1)))
@@ -48,7 +50,7 @@ done
 riverctl keyboard-layout -options grp:alt_shift_toggle us,ru
 
 riverctl default-layout rivertile
-rivertile -outer-padding 0 -view-padding 0 &
+rivertile -outer-padding 5 -view-padding 5 &
 
 eww daemon &
 eww open bar &

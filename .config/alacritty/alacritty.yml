@@ -1,18 +1,18 @@
 font:
   normal:
-    family: Fantasque Sans Mono
+    family: FantasqueSansM Nerd Font
     style: Regular
 
   bold:
-    family: Fantasque Sans Mono
+    family: FantasqueSansM Nerd Font
     style: Bold
 
   italic:
-    family: Fantasque Sans Mono
+    family: FantasqueSansM Nerd Font
     style: Italic
 
   bold_italic:
-    family: Fantasque Sans Mono
+    family: FantasqueSansM Nerd Font
     style: Bold Italic
 
   size: 19
@@ -21,3 +21,7 @@ colors:
   primary:
     background: "#000000"
     foreground: "#7fff7f"
+
+window:
+  opacity: 0.5
+

@@ -1,6 +1,16 @@
 require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
     use {
+        "simrat39/symbols-outline.nvim",
+        config = function()
+            require("symbols-outline").setup {
+                symbols = {
+                    Class = { icon = "󰏗", hl = "@type" }
+                }
+            }
+        end
+    }
+    use {
         -- "rebelot/kanagawa.nvim",
         "daschw/leaf.nvim",
         config = function()
@@ -25,10 +35,8 @@ require("packer").startup(function(use)
             highlight = { enable = true }
         } end
     }
-    --[[
     use {
         'akinsho/bufferline.nvim',
-        requires = "nvim-tree/nvim-web-devicons",
 	    config = function() require("bufferline").setup {
             options = {
                 offsets = {
@@ -39,10 +47,8 @@ require("packer").startup(function(use)
     }
     use {
         "nvim-tree/nvim-tree.lua",
-        requires = "nvim-tree/nvim-web-devicons",
     	config = function() require("nvim-tree").setup() end
     }
-    ]]--
     use {
 	    "neovim/nvim-lspconfig",
 	    requires = {

@@ -11,26 +11,26 @@ exec ~/.config/sway/split
 bar {
     position top
     status_command while ~/.config/sway/bar.sh; do sleep 5; done
-    font Fantasque Sans Mono 19
+    font FantasqueSansM Nerd Font 19
     workspace_min_width 35
     colors {
-        statusline #FF007F
+        statusline #7FFF7F
         background #00000000
-	focused_workspace #FF007F #000000 #FF007F
-	inactive_workspace #000000 #000000 #FF007F
+	focused_workspace #7FFF7F #000000 #7FFF7F
+	inactive_workspace #000000 #000000 #7FFF7F
     }
 }
 
-client.focused #FF007F #FF007F #000000 #FF007F
-client.focused_inactive #000000 #000000 #FF007F #000000
-client.unfocused #000000 #000000 #FF007F #000000
+client.focused #7FFF7F #7FFF7F #000000 #7FFF7F
+client.focused_inactive #000000 #000000 #7FFF7F #000000
+client.unfocused #000000 #000000 #7FFF7F #000000
 
 
 floating_modifier Mod4
 
-bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+
-bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
-bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec amixer set Master 1%+
+bindsym XF86AudioLowerVolume exec amixer set Master 1%-
+bindsym XF86AudioMute exec amixer set Master toggle
 
 bindsym Mod4+Shift+Return exec alacritty
 
@@ -44,11 +44,11 @@ xwayland disable
 
 bindsym Print exec grim ~/screenshots/$(date +%s).png
 
-bindsym Mod4+Shift+c kill
+bindsym Alt+F4 kill
 bindsym Mod4+p exec bemenu-run
 
 bindsym Mod4+Shift+r reload
-bindsym Mod4+Shift+q exit
+bindsym Mod4+Escape exit
 
 
 bindsym Mod4+h focus left
@@ -85,7 +85,7 @@ bindsym Mod4+Shift+0 move container to workspace number 10
 
 bindsym Mod4+f fullscreen
 
-bindsym Mod4+Shift+space floating toggle
+bindsym Mod4+space floating toggle
 
 bindsym Mod4+space focus mode_toggle
 
