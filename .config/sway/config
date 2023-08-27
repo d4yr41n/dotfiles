@@ -87,11 +87,3 @@ bindsym Mod4+f fullscreen
 
 bindsym Mod4+space floating toggle
 
-bindsym Mod4+space focus mode_toggle
-
-bindsym Mod4+a focus parent
-
-bindsym Mod4+Shift+minus move scratchpad
-
-bindsym Mod4+minus scratchpad show
-
