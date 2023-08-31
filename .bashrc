@@ -11,3 +11,6 @@ venv() {
 }
 
 export PS1="\$(venv)$left \u in \h $right $left \w $right\nλ "
+
+complete -cf doas
+

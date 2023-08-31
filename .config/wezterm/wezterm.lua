@@ -1,8 +1,12 @@
 local wezterm = require 'wezterm'
 
 local config = {
-    font = wezterm.font 'Fantasque Sans Mono',
+    font = wezterm.font 'FantasqueSansM Nerd Font',
     font_size = 19,
+
+    use_fancy_tab_bar = false,
+
+    tab_max_width = 64,
 
     colors = {
         background = "#000000",
@@ -14,6 +18,37 @@ local config = {
 
         selection_bg = "#7FFF7F",
         selection_fg = "#000000",
+
+        tab_bar = {
+
+            background = "#000000",
+            
+            active_tab = {
+                bg_color = "7FFF7F",
+                fg_color = "000000"
+            },
+            
+            inactive_tab = {
+                bg_color = "000000",
+                fg_color = "7FFF7F"
+            },
+
+            inactive_tab_hover = {
+                bg_color = "7FFF7F",
+                fg_color = "000000"
+            },
+
+            new_tab = {
+                bg_color = "000000",
+                fg_color = "7FFF7F"
+            },
+
+            new_tab_hover = {
+                bg_color = "7FFF7F",
+                fg_color = "000000"
+
+            }
+        }
     },
 
     hide_tab_bar_if_only_one_tab = true,

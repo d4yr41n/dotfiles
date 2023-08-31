@@ -1,6 +1,77 @@
-require("packer").startup(function(use)
-    use "wbthomason/packer.nvim"
-    use {
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+vim.g.mapleader = " "
+
+require("lazy").setup({
+    "nvim-tree/nvim-web-devicons",
+    {
+        'glepnir/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup {
+                theme = "doom",
+                config = {
+                    header = {
+                        "",
+                        "",
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠛⠛⠋⠉⠈⠉⠉⠉⠉⠛⠻⢿⣿⣿⣿⣿⣿⣿⣿",
+                        "⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⢿⣿⣿⣿⣿",
+                        "⣿⣿⣿⣿⡏⣀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿",
+                        "⣿⣿⣿⢏⣴⣿⣷⠀⠀⠀⠀⠀⢾⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿",
+                        "⣿⣿⣟⣾⣿⡟⠁⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣷⢢⠀⠀⠀⠀⠀⠀⠀⢸⣿",
+                        "⣿⣿⣿⣿⣟⠀⡴⠄⠀⠀⠀⠀⠀⠀⠙⠻⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⣿",
+                        "⣿⣿⣿⠟⠻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠶⢴⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⣿",
+                        "⣿⣁⡀⠀⠀⢰⢠⣦⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⡄⠀⣴⣶⣿⡄⣿",
+                        "⣿⡋⠀⠀⠀⠎⢸⣿⡆⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⠗⢘⣿⣟⠛⠿⣼",
+                        "⣿⣿⠋⢀⡌⢰⣿⡿⢿⡀⠀⠀⠀⠀⠀⠙⠿⣿⣿⣿⣿⣿⡇⠀⢸⣿⣿⣧⢀⣼",
+                        "⣿⣿⣷⢻⠄⠘⠛⠋⠛⠃⠀⠀⠀⠀⠀⢿⣧⠈⠉⠙⠛⠋⠀⠀⠀⣿⣿⣿⣿⣿",
+                        "⣿⣿⣧⠀⠈⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⢀⢃⠀⠀⢸⣿⣿⣿⣿",
+                        "⣿⣿⡿⠀⠴⢗⣠⣤⣴⡶⠶⠖⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡸⠀⣿⣿⣿⣿",
+                        "⣿⣿⣿⡀⢠⣾⣿⠏⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠉⠀⣿⣿⣿⣿",
+                        "⣿⣿⣿⣧⠈⢹⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿",
+                        "⣿⣿⣿⣿⡄⠈⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⣿⣿⣿",
+                        "⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿",
+                        "⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
+                        "⣿⣿⣿⣿⣿⣦⣄⣀⣀⣀⣀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠙⣿⣿⡟⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿",
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠁⠀⠀⠹⣿⠃⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿",
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢐⣿⣿⣿⣿⣿⣿⣿⣿⣿",
+                        "⣿⣿⣿⣿⠿⠛⠉⠉⠁⠀⢻⣿⡇⠀⠀⠀⠀⠀⠀⢀⠈⣿⣿⡿⠉⠛⠛⠛⠉⠉",
+                        "⣿⡿⠋⠁⠀⠀⢀⣀⣠⡴⣸⣿⣇⡄⠀⠀⠀⠀⢀⡿⠄⠙⠛⠀⣀⣠⣤⣤⠄⠀",
+                        ""
+                    },
+                    center = {
+                        {
+                            desc = "tree",
+                            key = "t",
+                            action = "NvimTreeOpen"
+                        },
+                        {
+                            desc = "exit",
+                            key = "q",
+                            action = "q"
+                        }
+                    },
+                    footer = {
+                        "Nothing but pain"
+                    }
+                }
+            }
+        end,
+    },
+    {
         "simrat39/symbols-outline.nvim",
         config = function()
             require("symbols-outline").setup {
@@ -9,18 +80,14 @@ require("packer").startup(function(use)
                 }
             }
         end
-    }
-    use {
-        -- "rebelot/kanagawa.nvim",
-        "daschw/leaf.nvim",
+    },
+    {
+        "bluz71/vim-moonfly-colors",
         config = function()
-            require("leaf").setup {
-                contrast = "high"
-            }
-            vim.cmd("colorscheme leaf")
+            vim.cmd("colorscheme moonfly")
         end
-    }
-    use {
+    },
+    {
         "nvim-lualine/lualine.nvim",
         config = function() require("lualine").setup {
             options = { 
@@ -28,30 +95,34 @@ require("packer").startup(function(use)
                 disabled_filetypes = { "NvimTree" }
             }
         } end
-    }
-    use {
+    },
+    {
         "nvim-treesitter/nvim-treesitter",
         config = function() require("nvim-treesitter.configs").setup {
             highlight = { enable = true }
         } end
-    }
-    use {
+    },
+    {
         'akinsho/bufferline.nvim',
 	    config = function() require("bufferline").setup {
             options = {
                 offsets = {
-                    { filetype = "NvimTree" }
-                }
+                    {
+                        filetype = "NvimTree",
+                        highlight = "Directory",
+                        separator = true
+                    }
+                },
             }
         } end
-    }
-    use {
+    },
+    {
         "nvim-tree/nvim-tree.lua",
     	config = function() require("nvim-tree").setup() end
-    }
-    use {
+    },
+    {
 	    "neovim/nvim-lspconfig",
-	    requires = {
+	    dependencies = {
             "hrsh7th/nvim-cmp",
             "hrsh7th/cmp-nvim-lsp",
     	    "L3MON4D3/LuaSnip",
@@ -59,5 +130,5 @@ require("packer").startup(function(use)
 	    },
         config = function() require("lsp") end
     }
-end)
+})
 

@@ -4,7 +4,8 @@ input * {
     xkb_options grp:alt_shift_toggle
 }
 
-output * bg #000000 solid_color
+output * bg ~/wallpapers/dbx.png fit #000000
+#output * bg #000000 solid_color
 
 exec ~/.config/sway/split
 
@@ -16,7 +17,7 @@ bar {
     colors {
         statusline #7FFF7F
         background #00000000
-	focused_workspace #7FFF7F #000000 #7FFF7F
+	focused_workspace #7FFF7F #7FFF7F #000000
 	inactive_workspace #000000 #000000 #7FFF7F
     }
 }
@@ -32,7 +33,7 @@ bindsym XF86AudioRaiseVolume exec amixer set Master 1%+
 bindsym XF86AudioLowerVolume exec amixer set Master 1%-
 bindsym XF86AudioMute exec amixer set Master toggle
 
-bindsym Mod4+Shift+Return exec alacritty
+bindsym Mod4+Shift+Return exec wezterm
 
 default_border pixel
 
@@ -45,7 +46,16 @@ xwayland disable
 bindsym Print exec grim ~/screenshots/$(date +%s).png
 
 bindsym Alt+F4 kill
-bindsym Mod4+p exec bemenu-run
+bindsym Mod4+p exec LANG=ru_RU.UTF-8 $(echo "chromium\ntelegram-desktop" | bemenu \
+--fn "FantasqueSansM Nerd Font 19" -p ">>>" -H 34 \
+--hb "#7FFF7F" --hf "#000000" \
+--fb "#000000" --ff "#7FFF7F" \
+--cb "#000000" --cf "#7FFF7F" \
+--nb "#000000" --nf "#7FFF7F" \
+--tb "#000000" --tf "#7FFF7F" \
+--ab "#000000" --af "#7FFF7F")
+
+bindsym Mod4+g exec LANG=ru_RU.UTF-8 chromium
 
 bindsym Mod4+Shift+r reload
 bindsym Mod4+Escape exit
