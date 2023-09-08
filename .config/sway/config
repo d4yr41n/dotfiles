@@ -13,12 +13,12 @@ bar {
     position top
     status_command while ~/.config/sway/bar.sh; do sleep 5; done
     font FantasqueSansM Nerd Font 19
-    workspace_min_width 35
+    workspace_min_width 34
     colors {
         statusline #7FFF7F
         background #00000000
-	focused_workspace #7FFF7F #7FFF7F #000000
-	inactive_workspace #000000 #000000 #7FFF7F
+	    focused_workspace #7FFF7F #7FFF7F #000000
+        inactive_workspace #000000 #000000 #7FFF7F
     }
 }
 
@@ -47,13 +47,14 @@ bindsym Print exec grim ~/screenshots/$(date +%s).png
 
 bindsym Alt+F4 kill
 bindsym Mod4+p exec LANG=ru_RU.UTF-8 $(echo "chromium\ntelegram-desktop" | bemenu \
+--ch 32 --cw 2 \
 --fn "FantasqueSansM Nerd Font 19" -p ">>>" -H 34 \
---hb "#7FFF7F" --hf "#000000" \
---fb "#000000" --ff "#7FFF7F" \
---cb "#000000" --cf "#7FFF7F" \
---nb "#000000" --nf "#7FFF7F" \
---tb "#000000" --tf "#7FFF7F" \
---ab "#000000" --af "#7FFF7F")
+--hb "#000000" --hf "#7FFF7F" \
+--fb "#7FFF7F" --ff "#000000" \
+--cb "#7FFF7F" --cf "#000000" \
+--nb "#7FFF7F" --nf "#000000" \
+--tb "#7FFF7F" --tf "#000000" \
+--ab "#7FFF7F" --af "#000000")
 
 bindsym Mod4+g exec LANG=ru_RU.UTF-8 chromium
 

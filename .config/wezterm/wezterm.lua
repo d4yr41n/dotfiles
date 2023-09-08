@@ -53,9 +53,10 @@ local config = {
 
     hide_tab_bar_if_only_one_tab = true,
 
-    default_cursor_style = "SteadyUnderline",
+    default_cursor_style = "BlinkingUnderline",
 
-    window_background_opacity = 0.3
+    window_background_opacity = 0.3,
+    animation_fps = 24
 }
 
 return config
