@@ -1,17 +1,8 @@
-## Neovim
+# Software
 
-Install [packer](https://github.com/wbthomason/packer.nvim) first
-
-```shell
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
-
-Then enter nvim and type
-
-```
-:PackerSync
-```
+Compositor - dwl \
+Menu - wmenu \
+Terminual - alacritty
 
 ![screenshot](screenshots/screenshot-arch.png)
 

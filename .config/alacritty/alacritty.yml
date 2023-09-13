@@ -2,15 +2,15 @@ font:
   normal:
     family: FantasqueSansM Nerd Font
     style: Regular
-
+  
   bold:
     family: FantasqueSansM Nerd Font
     style: Bold
-
+  
   italic:
     family: FantasqueSansM Nerd Font
     style: Italic
-
+  
   bold_italic:
     family: FantasqueSansM Nerd Font
     style: Bold Italic

@@ -4,7 +4,7 @@ input * {
     xkb_options grp:alt_shift_toggle
 }
 
-output * bg ~/wallpapers/dbx.png fit #000000
+output * bg ~/wallpapers/wallpaper.png fill #000000
 #output * bg #000000 solid_color
 
 exec ~/.config/sway/split
@@ -33,7 +33,7 @@ bindsym XF86AudioRaiseVolume exec amixer set Master 1%+
 bindsym XF86AudioLowerVolume exec amixer set Master 1%-
 bindsym XF86AudioMute exec amixer set Master toggle
 
-bindsym Mod4+Shift+Return exec wezterm
+bindsym Mod4+Shift+Return exec alacritty
 
 default_border pixel
 
@@ -46,31 +46,22 @@ xwayland disable
 bindsym Print exec grim ~/screenshots/$(date +%s).png
 
 bindsym Alt+F4 kill
-bindsym Mod4+p exec LANG=ru_RU.UTF-8 $(echo "chromium\ntelegram-desktop" | bemenu \
---ch 32 --cw 2 \
---fn "FantasqueSansM Nerd Font 19" -p ">>>" -H 34 \
---hb "#000000" --hf "#7FFF7F" \
---fb "#7FFF7F" --ff "#000000" \
---cb "#7FFF7F" --cf "#000000" \
---nb "#7FFF7F" --nf "#000000" \
---tb "#7FFF7F" --tf "#000000" \
---ab "#7FFF7F" --af "#000000")
+bindsym Mod4+p exec menu
 
-bindsym Mod4+g exec LANG=ru_RU.UTF-8 chromium
+bindsym Mod4+g exec LANG=ru_RU.UTF-8 librewolf-bin
 
-bindsym Mod4+Shift+r reload
 bindsym Mod4+Escape exit
 
+bindsym Mod4+j focus prev
+bindsym Mod4+k focus next
 
-bindsym Mod4+h focus left
-bindsym Mod4+j focus down
-bindsym Mod4+k focus up
-bindsym Mod4+l focus right
+bindsym Mod4+h move left
+bindsym Mod4+l move right
 
-bindsym Mod4+Shift+h move left
-bindsym Mod4+Shift+j move down
-bindsym Mod4+Shift+k move up
-bindsym Mod4+Shift+l move right
+bindsym Mod4+Shift+r reload
+
+bindsym Mod4+f fullscreen
+bindsym Mod4+space floating toggle
 
 
 bindsym Mod4+1 workspace number 1
@@ -93,8 +84,4 @@ bindsym Mod4+Shift+7 move container to workspace number 7
 bindsym Mod4+Shift+8 move container to workspace number 8
 bindsym Mod4+Shift+9 move container to workspace number 9
 bindsym Mod4+Shift+0 move container to workspace number 10
-
-bindsym Mod4+f fullscreen
-
-bindsym Mod4+space floating toggle
 
