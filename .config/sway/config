@@ -9,6 +9,8 @@ output * bg ~/wallpapers/wallpaper.png fill #000000
 
 exec ~/.config/sway/split
 
+font FantasqueSansM Nerd Font 19
+
 bar {
     position top
     status_command while ~/.config/sway/bar.sh; do sleep 5; done
@@ -55,13 +57,14 @@ bindsym Mod4+Escape exit
 bindsym Mod4+j focus prev
 bindsym Mod4+k focus next
 
-bindsym Mod4+h move left
-bindsym Mod4+l move right
+bindsym Mod4+Return move left
 
 bindsym Mod4+Shift+r reload
 
 bindsym Mod4+f fullscreen
 bindsym Mod4+space floating toggle
+
+bindsym Mod4+t layout toggle tabbed split
 
 
 bindsym Mod4+1 workspace number 1

@@ -1,6 +1,0 @@
-app-admin/doas persist
-app-misc/mime-types nginx
-gui-apps/swaybg gdk-pixbuf
-gui-libs/wlroots x11-backend
-gui-wm/dwl savedconfig
-sys-apps/systemd gnuefi
