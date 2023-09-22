@@ -69,7 +69,7 @@ require("lazy").setup({
                             action = "e ~/"
                         },
                         {
-                            desc = "exit",
+                            desc = "quit",
                             key = "q",
                             action = "q"
                         }

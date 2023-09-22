@@ -1,8 +1,8 @@
-# Software
+### Software
 
 Compositor - dwl \
-Menu - wmenu \
-Terminual - alacritty
+Menu - script-menu(bunch of scripts based on wmenu) \
+Terminal - alacritty
 
-![screenshot](screenshots/screenshot-arch.png)
+![screenshot](screenshot.png)
 

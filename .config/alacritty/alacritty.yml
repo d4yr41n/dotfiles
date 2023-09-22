@@ -21,8 +21,6 @@ colors:
   primary:
     foreground: "#7fff7f"
     background: "#000000"
-  normal:
-    red: "#ff7f7f"
 
 window:
   padding:
