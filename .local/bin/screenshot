@@ -1,0 +1,1 @@
+grim ~/screenshots/$(date +%s).png

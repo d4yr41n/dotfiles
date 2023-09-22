@@ -14,6 +14,15 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
 require("lazy").setup({
+    {
+        "daschw/leaf.nvim",
+        config = function()
+            require("leaf").setup {
+                contrast = "high"
+            }
+            vim.cmd("colorscheme leaf")
+        end
+    },
     "nvim-tree/nvim-web-devicons",
     {
         'glepnir/dashboard-nvim',
@@ -43,13 +52,21 @@ require("lazy").setup({
                         [[||   .=='    _-'          '-__\._-'         '-_./__-'         `' |. /|  |   ||]],
                         [[||.=='    _-'                                                     `' |  /==.||]],
                         [[=='    _-'                                                            \/   `==]],
-                        [[\   _-'                                                                `-_   /]]
+                        [[\   _-'                                                                `-_   /]],
+                        [[]],
+                        [[]],
+                        [[]]
                     },
                     center = {
                         {
+                            desc = "new",
+                            key = "n",
+                            action = "tabnew"
+                        },
+                        {
                             desc = "tree",
                             key = "t",
-                            action = "NvimTreeOpen"
+                            action = "e ~/"
                         },
                         {
                             desc = "exit",
@@ -58,60 +75,23 @@ require("lazy").setup({
                         }
                     },
                     footer = {
-                        "Nothing but pain"
+                        "",
+                        "",
+                        "",
+                        "Nothing but pain",
+                        "",
+                        "",
+                        ""
                     }
                 }
             }
         end,
     },
     {
-        "simrat39/symbols-outline.nvim",
-        config = function()
-            require("symbols-outline").setup {
-                symbols = {
-                    Class = { icon = "󰏗", hl = "@type" }
-                }
-            }
-        end
-    },
-    {
-        "bluz71/vim-moonfly-colors",
-        config = function()
-            vim.cmd("colorscheme moonfly")
-        end
-    },
-    {
-        "nvim-lualine/lualine.nvim",
-        config = function() require("lualine").setup {
-            options = { 
-                icons_enabled = false,
-                disabled_filetypes = { "NvimTree" }
-            }
-        } end
-    },
-    {
         "nvim-treesitter/nvim-treesitter",
         config = function() require("nvim-treesitter.configs").setup {
             highlight = { enable = true }
         } end
-    },
-    {
-        'akinsho/bufferline.nvim',
-	    config = function() require("bufferline").setup {
-            options = {
-                offsets = {
-                    {
-                        filetype = "NvimTree",
-                        highlight = "Directory",
-                        separator = true
-                    }
-                },
-            }
-        } end
-    },
-    {
-        "nvim-tree/nvim-tree.lua",
-    	config = function() require("nvim-tree").setup() end
     },
     {
 	    "neovim/nvim-lspconfig",

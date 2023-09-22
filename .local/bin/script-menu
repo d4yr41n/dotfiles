@@ -1,0 +1,32 @@
+font="Fantasque Sans Mono 19"
+c0="#000000"
+c1="#7FFf7F"
+
+
+menu() {
+    printf "%s\n" $@ | wmenu -f "$font" -N $c0 -n $c1 -S $c1 -s $c0
+}
+
+
+launcher() {
+    menu chromium telegram-desktop | sh
+}
+
+
+wallpaper() {
+    file=$(menu $(ls ~/wallpapers))
+    if [ -n "$file" ]; then
+        path=~/wallpapers/$file
+        pkill swaybg
+        swaybg -i $path -m fill &
+    fi
+}
+
+
+main() {
+    $(menu launcher wallpaper)
+}
+
+
+main
+

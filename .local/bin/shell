@@ -1,0 +1,9 @@
+swaybg -i wallpapers/wallpaper-0.png -m fill &
+
+dwlb -font "Fantasque Sans Mono:size=19" \
+-active-fg-color "000000" -active-bg-color "7FFF7F" \
+-occupied-fg-color "000000" -occupied-bg-color "7FFF7F" \
+-inactive-fg-color "7FFF7F" -inactive-bg-color "000000" \
+-vertical-padding 2
+exec <&-
+
