@@ -1,0 +1,64 @@
+screenshot() {
+	grim ~/screenshots/$(date +%s).png
+}
+
+
+status() {
+	battery=$(cat /sys/class/power_supply/BAT0/capacity)
+	volume=$(amixer get Master | awk -F"[][]" '/Left: / { print $2 }')
+	network=$(iwctl station wlan0 show | head -7 | tail -1 | cut -b 35- | xargs)
+	free=$(free --mega | awk '{print $3}' | head -2 | tail -1)
+	used=$(free --mega | awk '{print $2}' | head -2 | tail -1)
+	cpu=$(top -bn 1 | awk '{print $2}' | head -3 | tail -1)
+	time=$(date +%R)
+	sep="|"
+	echo "[ NET $network ] [ VOL $volume ] [ CPU $cpu ] [ RAM $free/$used ] [ BAT $battery ] [ $time ]"
+}
+
+
+init() {
+	swaybg -i wallpapers/wallpaper-0.png -m fill &
+	
+	dwlb -font "Fantasque Sans Mono:size=19" \
+	-active-fg-color "000000" -active-bg-color "7FFF7F" \
+	-occupied-fg-color "000000" -occupied-bg-color "7FFF7F" \
+	-inactive-fg-color "7FFF7F" -inactive-bg-color "000000" \
+	-vertical-padding 2
+	exec <&-
+}
+
+
+c0="#000000"
+c1="#ff007f"
+
+
+menu() {
+	printf "%s\n" $@ | wmenu -f "Fantasque Sans Mono 19" -N $c0 -n $c1 -S $c1 -s $c0
+}
+
+
+launcher() {
+	menu chromium-browser telegram-desktop | sh
+}
+
+
+wallpaper() {
+	if [ -d ~/wallpapers ]
+	then
+		file=$(menu $(ls ~/wallpapers))
+		if [ -n "$file" ]; then
+			path=~/wallpapers/$file
+			pkill swaybg
+			swaybg -i $path -m fill &
+		fi
+	fi
+}
+
+
+main() {
+	$(menu launcher wallpaper)
+}
+
+
+$1
+

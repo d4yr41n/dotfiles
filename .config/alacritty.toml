@@ -1,0 +1,31 @@
+[font]
+size = 19
+
+[font.normal]
+family = "Fantasque Sans Mono"
+style = "Regular"
+
+[font.bold]
+family = "Fantasque Sans Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "Fantasque Sans Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "Fantasque Sans Mono"
+style = "Italic"
+
+[colors.primary]
+background = "#000000"
+foreground = "#FFFFFF"
+
+[cursor.style]
+shape = "Underline"
+blinking = "On"
+
+[cursor]
+blink_interval = 500
+blink_timeout = 0
+
