@@ -1,0 +1,24 @@
+set number
+set noswapfile
+set mouse=a
+filetype plugin indent on
+
+set termguicolors
+highlight Function guifg=#7f00ff
+highlight PreProc guifg=#ff007f
+highlight Statement guifg=#ff007f
+highlight TabLine guibg=#000000 guifg=#ff007f
+highlight TabLineFill guifg=#000000
+highlight TabLineSel guibg=#ff007f guifg=#000000
+highlight Pmenu guibg=#000000 guifg=#ff007f
+highlight PmenuSel guibg=#ff007f guifg=#000000
+highlight LineNr guifg=#7f7f7f
+highlight EndOfBuffer guifg=#7f7f7f
+highlight SignColumn guibg=#000000
+highlight Error guibg=#000000 guifg=#ff0000
+
+let g:asyncomplete_auto_completeopt = 0
+set completeopt=menuone,noinsert
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
