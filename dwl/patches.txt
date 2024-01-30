@@ -1,0 +1,1 @@
+https://codeberg.org/dwl/dwl-patches/raw/branch/main/simpleborders/simpleborders.patch

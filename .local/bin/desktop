@@ -11,25 +11,17 @@ status() {
 	used=$(free --mega | awk '{print $2}' | head -2 | tail -1)
 	cpu=$(top -bn 1 | awk '{print $2}' | head -3 | tail -1)
 	time=$(date +%R)
-	sep="|"
 	echo "[ NET $network ] [ VOL $volume ] [ CPU $cpu ] [ RAM $free/$used ] [ BAT $battery ] [ $time ]"
 }
 
 
 init() {
 	swaybg -i wallpapers/wallpaper-0.png -m fill &
-	
-	dwlb -font "Fantasque Sans Mono:size=19" \
-	-active-fg-color "000000" -active-bg-color "7FFF7F" \
-	-occupied-fg-color "000000" -occupied-bg-color "7FFF7F" \
-	-inactive-fg-color "7FFF7F" -inactive-bg-color "000000" \
-	-vertical-padding 2
-	exec <&-
 }
 
 
-c0="#000000"
-c1="#ff007f"
+c0="#0f0f0f"
+c1="#ffffff"
 
 
 menu() {
