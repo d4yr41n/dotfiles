@@ -1,24 +1,65 @@
 set number
 set noswapfile
 set mouse=a
+set colorcolumn=80
 filetype plugin indent on
 
 set termguicolors
-highlight Function guifg=#7f00ff
+
+highlight Normal guifg=#ffffff guibg=#0f0f0f
+highlight Function guifg=#007fff
 highlight PreProc guifg=#ff007f
 highlight Statement guifg=#ff007f
-highlight TabLine guibg=#000000 guifg=#ff007f
-highlight TabLineFill guifg=#000000
-highlight TabLineSel guibg=#ff007f guifg=#000000
-highlight Pmenu guibg=#000000 guifg=#ff007f
-highlight PmenuSel guibg=#ff007f guifg=#000000
+highlight String guifg=#7fff00
+highlight TabLine guibg=#0f0f0f guifg=#7f7f7f cterm=none
+highlight TabLineFill guibg=#0f0f0f cterm=none
+highlight TabLineSel guibg=#0f0f0f guifg=#ffffff cterm=none
+highlight Pmenu guibg=#1f1f1f guifg=#ffffff
+highlight PmenuSel guibg=#ffffff guifg=#1f1f1f
+highlight PmenuSbar guibg=#1f1f1f
+highlight PmenuThumb guibg=#3f3f3f
 highlight LineNr guifg=#7f7f7f
 highlight EndOfBuffer guifg=#7f7f7f
 highlight SignColumn guibg=#000000
 highlight Error guibg=#000000 guifg=#ff0000
+highlight CursorColumn guifg=#000000
+highlight ColorColumn guibg=#1f1f1f
 
-let g:asyncomplete_auto_completeopt = 0
 set completeopt=menuone,noinsert
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+let g:asyncomplete_auto_completeopt = 0
+let g:lsp_diagnostics_enabled = 0
+let g:lsp_document_highlight_enabled = 0
+
+
+function MyTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  return bufname(buflist[winnr - 1])
+endfunction
+
+
+function MyTabLine()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    if i + 1 == tabpagenr()
+      let s ..= '%#TabLineSel#'
+      let s ..= '[ %{MyTabLabel(' .. (i + 1) .. ')} ]'
+    else
+      let s ..= '%#TabLine#'
+      let s ..= '  %{MyTabLabel(' .. (i + 1) .. ')}  '
+    endif
+  
+  endfor
+  
+  let s ..= '%#TabLineFill#%T'
+  
+  return s
+endfunction
+
+
+set tabline=%!MyTabLine()
+
