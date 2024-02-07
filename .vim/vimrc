@@ -17,12 +17,19 @@ let g:netrw_banner=0
 let g:netrw_dirhistmax = 0
 let g:asyncomplete_auto_completeopt = 0
 let g:lsp_document_highlight_enabled = 0
+let g:lsp_diagnostics_virtual_text_enabled = 0
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_echo_delay = 0
+
 
 function! MyTabLabel(n)
   let buflist = tabpagebuflist(a:n)
   let winnr = tabpagewinnr(a:n)
   let bufnr = buflist[winnr - 1]
   let name = bufname(bufnr)
+  if name == ''
+    let name = 'new'
+  endif
   if getbufvar(bufnr, "&mod")
     let name = '+ ' .. name
   endif
