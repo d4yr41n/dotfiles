@@ -5,6 +5,7 @@ set colorcolumn=80
 set termguicolors
 set completeopt=menuone,noinsert
 filetype plugin indent on
+set laststatus=0
 
 colorscheme payne
 
@@ -20,19 +21,25 @@ let g:lsp_document_highlight_enabled = 0
 function! MyTabLabel(n)
   let buflist = tabpagebuflist(a:n)
   let winnr = tabpagewinnr(a:n)
-  return bufname(buflist[winnr - 1])
+  let bufnr = buflist[winnr - 1]
+  let name = bufname(bufnr)
+  if getbufvar(bufnr, "&mod")
+    let name = '+ ' .. name
+  endif
+  return name
 endfunction
 
 
 function! MyTabLine()
   let s = ''
   for i in range(tabpagenr('$'))
-    if i + 1 == tabpagenr()
+    let tab = i + 1
+    if tab == tabpagenr()
       let s ..= '%#TabLineSel#'
-      let s ..= '[ %{MyTabLabel(' .. (i + 1) .. ')} ]'
+      let s ..= '[ %{MyTabLabel(' .. (tab) .. ')} ]'
     else
       let s ..= '%#TabLine#'
-      let s ..= '  %{MyTabLabel(' .. (i + 1) .. ')}  '
+      let s ..= '  %{MyTabLabel(' .. (tab) .. ')}  '
     endif
   
   endfor
