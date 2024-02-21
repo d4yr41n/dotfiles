@@ -4,9 +4,11 @@ highlight PreProc guifg=#ff007f
 highlight Statement guifg=#ff007f
 highlight String guifg=#7fff00
 
-highlight TabLine guibg=#0f0f0f guifg=#7f7f7f cterm=none
-highlight TabLineFill cterm=none
-highlight TabLineSel guifg=#ffffff cterm=none
+highlight TabLine guibg=#1f1f1f guifg=#7f7f7f cterm=none
+highlight TabLineFill guibg=#1f1f1f cterm=none
+highlight TabLineSel guibg=#1f1f1f guifg=#ffffff cterm=none
+
+highlight StatusLine guibg=#1f1f1f cterm=none
 
 highlight Pmenu guibg=#1f1f1f guifg=#ffffff
 highlight PmenuSel guibg=#ffffff guifg=#1f1f1f
