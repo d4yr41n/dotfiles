@@ -1,0 +1,13 @@
+app-admin/doas
+app-editors/vim
+dev-vcs/git
+gui-apps/grim
+gui-apps/wl-clipboard
+gui-apps/wmenu
+gui-wm/dwl
+media-fonts/fantasque-sans-mono
+net-im/telegram-desktop-bin
+net-wireless/iwd
+sys-kernel/gentoo-kernel-bin
+sys-kernel/linux-firmware
+x11-terms/alacritty

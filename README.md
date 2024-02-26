@@ -1,4 +1,5 @@
 ### Dotfiles
+- OS: [Gentoo](https://gentoo.org)
 - Compositor: [dwl](https://codeberg.org/dwl/dwl)
 - Font: [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans)
 - Menu: [wmenu](https://sr.ht/~adnano/wmenu)
