@@ -1,1 +1,11 @@
-/etc/portage/package.use
+app-admin/doas persist
+gui-wm/dwl savedconfig
+media-libs/mesa vulkan wayland
+media-libs/libglvnd X
+net-wireless/iwd standalone
+sys-auth/seatd server
+sys-apps/systemd-utils boot kernel-install
+sys-kernel/installkernel dracut systemd systemd-boot
+x11-libs/cairo X
+x11-libs/gtk+ wayland
+x11-terms/alacritty -X wayland

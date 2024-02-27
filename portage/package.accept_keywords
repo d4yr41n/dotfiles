@@ -1,1 +1,4 @@
-/etc/portage/package.accept_keywords
+gui-apps/wmenu
+gui-wm/dwl
+net-im/telegram-desktop-bin
+x11-terms/alacritty
