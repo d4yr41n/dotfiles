@@ -11,6 +11,6 @@ if [ -z "${XDG_RUNTIME_DIR}" ]; then
 fi
 
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
-    dwl &> /dev/null
+    dwl -s 'desktop init'
 fi
 

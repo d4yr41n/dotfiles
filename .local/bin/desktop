@@ -4,19 +4,20 @@ screenshot() {
 
 
 status() {
-	battery=$(cat /sys/class/power_supply/BAT0/capacity)
-	volume=$(amixer get Master | awk -F"[][]" '/Left: / { print $2 }')
-	network=$(iwctl station wlan0 show | head -7 | tail -1 | cut -b 35- | xargs)
-	free=$(free --mega | awk '{print $3}' | head -2 | tail -1)
-	used=$(free --mega | awk '{print $2}' | head -2 | tail -1)
-	cpu=$(top -bn 1 | awk '{print $2}' | head -3 | tail -1)
-	time=$(date +%R)
-	echo "[ NET $network ] [ VOL $volume ] [ CPU $cpu ] [ RAM $free/$used ] [ BAT $battery ] [ $time ]"
+	while true; do
+		battery=$(cat /sys/class/power_supply/BAT0/capacity)
+		network=$(iwctl station wlan0 show | awk 'NR==7 {print $3}')
+		ram=$(free --mega | awk 'NR==2 {print $3 "/" $2}')
+		time=$(date +%R)
+		echo "[ NET $network ] [ RAM $ram ] [ BAT $battery ] [ $time ]"
+		sleep 1
+	done
 }
 
 
 init() {
-	swaybg -i wallpapers/wallpaper-0.png -m fill &
+	swaybg -i wallpapers/wallpaper.jpg -m fill &
+	desktop status | ergo &
 }
 
 

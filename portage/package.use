@@ -1,7 +1,11 @@
 app-admin/doas persist
+app-editors/vim terminal
+gui-apps/swaybg gdk-pixbuf
 gui-wm/dwl savedconfig
+media-gfx/imv -X png jpeg wayland
 media-libs/mesa vulkan wayland
 media-libs/libglvnd X
+media-video/ffmpeg x264
 net-wireless/iwd standalone
 sys-auth/seatd server
 sys-apps/systemd-utils boot kernel-install
@@ -9,3 +13,4 @@ sys-kernel/installkernel dracut systemd systemd-boot
 x11-libs/cairo X
 x11-libs/gtk+ wayland
 x11-terms/alacritty -X wayland
+x11-libs/gdk-pixbuf jpeg
