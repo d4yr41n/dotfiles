@@ -30,6 +30,6 @@ blink_interval = 500
 blink_timeout = 0
 
 [window.padding]
-x = 11
-y = 11
+x = 16
+y = 16
 

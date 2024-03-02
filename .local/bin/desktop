@@ -17,7 +17,7 @@ status() {
 
 init() {
 	swaybg -i wallpapers/wallpaper.jpg -m fill &
-	desktop status | ergo &
+	desktop status | ergo -f "Fantasque Sans Mono 19" -b "#0f0f0fff" -t "#ffffffff" &
 }
 
 
