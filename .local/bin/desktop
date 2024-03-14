@@ -4,20 +4,23 @@ screenshot() {
 
 
 status() {
+	battery=$(cat /sys/class/power_supply/BAT0/capacity)
+	network=$(iwctl station wlan0 show | awk 'NR==7 {print $3}')
+	ram=$(free --mega | awk 'NR==2 {print $3 "/" $2}')
+	time=$(date +%R)
+	echo "[ NET $network ] [ RAM $ram ] [ BAT $battery ] [ $time ]"
+}
+
+status_loop() {
 	while true; do
-		battery=$(cat /sys/class/power_supply/BAT0/capacity)
-		network=$(iwctl station wlan0 show | awk 'NR==7 {print $3}')
-		ram=$(free --mega | awk 'NR==2 {print $3 "/" $2}')
-		time=$(date +%R)
-		echo "[ NET $network ] [ RAM $ram ] [ BAT $battery ] [ $time ]"
+		status
 		sleep 1
 	done
 }
 
-
 init() {
-	swaybg -i wallpapers/wallpaper.jpg -m fill &
-	desktop status | ergo -f "Fantasque Sans Mono 19" -b "#0f0f0fff" -t "#ffffffff" &
+	swaybg -i wallpapers/wallpaper.jpg -m fit -c "#0f0f0f" &
+	# desktop status_loop | ergo -f "Fantasque Sans Mono 19" -b "#0f0f0fff" -t "#ffffffff"
 }
 
 

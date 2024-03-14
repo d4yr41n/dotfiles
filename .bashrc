@@ -9,3 +9,5 @@ venv() {
 
 export PS1="\$(venv)[ \u@\h ] [ \w ]\n> "
 
+complete -cf doas
+
