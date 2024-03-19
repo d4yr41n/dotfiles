@@ -14,15 +14,15 @@ status() {
 status_loop() {
 	while true; do
 		status
-		sleep 1
+		sleep 2
 	done
 }
 
 init() {
 	swaybg -i wallpapers/wallpaper.jpg -m fit -c "#0f0f0f" &
-	# desktop status_loop | ergo -f "Fantasque Sans Mono 19" -b "#0f0f0fff" -t "#ffffffff"
+	desktop status_loop | ergo &
+	cat > .cache/dwl
 }
-
 
 c0="#0f0f0f"
 c1="#ffffff"
