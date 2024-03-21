@@ -6,6 +6,7 @@ media-gfx/imv -X png jpeg wayland
 media-libs/mesa vulkan wayland
 media-libs/libglvnd X
 media-video/ffmpeg x264
+media-video/mpv -X wayland
 net-wireless/iwd standalone
 sys-auth/seatd server
 sys-apps/systemd-utils boot kernel-install

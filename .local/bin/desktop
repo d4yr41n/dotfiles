@@ -1,3 +1,8 @@
+font="Fantasque Sans Mono 19"
+bg="#0f0f0f"
+fg="#ffffff"
+
+
 screenshot() {
 	grim ~/screenshots/$(date +%s).png
 }
@@ -8,7 +13,10 @@ status() {
 	network=$(iwctl station wlan0 show | awk 'NR==7 {print $3}')
 	ram=$(free --mega | awk 'NR==2 {print $3 "/" $2}')
 	time=$(date +%R)
-	echo "[ NET $network ] [ RAM $ram ] [ BAT $battery ] [ $time ]"
+	current=$(mpc current)
+	music=$(echo "${current%.*}")
+	volume=$(amixer get Master | awk -F"[][]" '/Mono:/{print $2}')
+	echo "$music  NET $network  RAM $ram  VOL $volume  BAT $battery  $time "
 }
 
 status_loop() {
@@ -20,39 +28,41 @@ status_loop() {
 
 init() {
 	swaybg -i wallpapers/wallpaper.jpg -m fit -c "#0f0f0f" &
-	desktop status_loop | ergo &
+	desktop status_loop | ergo -f "$font" -b $bg -c $fg &
 	cat > .cache/dwl
 }
 
-c0="#0f0f0f"
-c1="#ffffff"
-
-
 menu() {
-	printf "%s\n" $@ | wmenu -f "Fantasque Sans Mono 19" -N $c0 -n $c1 -S $c1 -s $c0
+	echo -e "$1" | wmenu -f "$font" -N $bg -n $fg -S $fg -s $bg -l3
 }
 
 
 launcher() {
-	menu chromium-browser telegram-desktop | sh
+	menu "chromium-browser\ntelegram-desktop" | sh
 }
 
 
 wallpaper() {
 	if [ -d ~/wallpapers ]
 	then
-		file=$(menu $(ls ~/wallpapers))
+		file=$(menu "$(ls -1 ~/wallpapers)")
 		if [ -n "$file" ]; then
 			path=~/wallpapers/$file
 			pkill swaybg
-			swaybg -i $path -m fill &
+			swaybg -i $path -m fit &
 		fi
 	fi
 }
 
+music() {
+	file=$(menu "$(mpc ls)")
+	mpc clear
+	mpc add "$file"
+	mpc play
+}
 
 main() {
-	$(menu launcher wallpaper)
+	 $(menu "launcher\nwallpaper\nmusic")
 }
 
 
