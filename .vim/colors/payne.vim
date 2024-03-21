@@ -14,7 +14,7 @@ highlight PmenuSel guibg=#1f1f1f guifg=#ffffff
 highlight PmenuSbar guibg=#1f1f1f
 highlight PmenuThumb guibg=#3f3f3f
 
-" highlight Error guibg=#0f0f0f guifg=#ff0000
+highlight Error guibg=#0f0f0f guifg=#ff0000
 
 highlight LineNr guifg=#7f7f7f
 highlight NonText guifg=#7f7f7f
@@ -24,4 +24,7 @@ highlight Todo guibg=#0f0f0f guifg=#ff7f00
 
 highlight Statement guifg=#7f00ff
 highlight Type guifg=#ff007f
-highlight Constant guifg=#00ff7f
+highlight Constant guifg=#7fff00
+
+highlight MatchParen guibg=#0f0f0f guifg=#ff0000
+highlight Comment guifg=#7f7f7f
