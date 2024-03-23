@@ -10,3 +10,15 @@
 [submodule ".vim/pack/build/start/vim-lsp-settings"]
 	path = .vim/pack/build/start/vim-lsp-settings
 	url = https://github.com/mattn/vim-lsp-settings
+[submodule ".vim/pack/build/start/lsp"]
+	path = .vim/pack/build/start/lsp
+	url = https://github.com/yegappan/lsp.git
+[submodule ".vim/pack/build/start/vim-lsc"]
+	path = .vim/pack/build/start/vim-lsc
+	url = https://github.com/natebosch/vim-lsc.git
+[submodule ".vim/pack/build/opt/lsp"]
+	path = .vim/pack/build/opt/lsp
+	url = https://github.com/yegappan/lsp.git
+[submodule ".vim/pack/build/opt/vimcomplete"]
+	path = .vim/pack/build/opt/vimcomplete
+	url = https://github.com/girishji/vimcomplete.git

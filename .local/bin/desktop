@@ -33,7 +33,7 @@ init() {
 }
 
 menu() {
-	echo -e "$1" | wmenu -f "$font" -N $bg -n $fg -S $fg -s $bg -l3
+	echo -e "$1" | wmenu -f "$font" -N $bg -n $fg -S $fg -s $bg
 }
 
 

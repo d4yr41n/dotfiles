@@ -1,3 +1,5 @@
+vim9script
+
 set number
 set noswapfile
 set mouse=a
@@ -11,54 +13,78 @@ set shiftwidth=4
 
 colorscheme payne
 
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+g:netrw_banner = 0
+g:netrw_dirhistmax = 0
+g:vimcomplete_tab_enable = 1
 
-let g:netrw_banner=0
-let g:netrw_dirhistmax = 0
-let g:asyncomplete_auto_completeopt = 0
-let g:lsp_document_highlight_enabled = 0
-let g:lsp_diagnostics_virtual_text_enabled = 0
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_diagnostics_echo_delay = 0
-let g:lsp_settings_enable_suggestions = 0
+def g:TabLabel(n: number): string
+	var buflist = tabpagebuflist(n)
+	var winnr = tabpagewinnr(n)
+	var bufnr = buflist[winnr - 1]
+	var name = bufname(bufnr)
+	if name == ''
+		name = '[No Name]'
+	endif
+	if getbufvar(bufnr, "&mod")
+		name = '+ ' .. name
+	endif
+	return name
+enddef
 
+def g:TabLine(): string
+	var s = ''
+	for i in range(tabpagenr('$'))
+		var tab = i + 1
+		if tab == tabpagenr()
+			s ..= '%#TabLineSel#'
+		else
+			s ..= '%#TabLine#'
+		endif
 
-function! MyTabLabel(n)
-  let buflist = tabpagebuflist(a:n)
-  let winnr = tabpagewinnr(a:n)
-  let bufnr = buflist[winnr - 1]
-  let name = bufname(bufnr)
-  if name == ''
-    let name = 'new'
-  endif
-  if getbufvar(bufnr, "&mod")
-    let name = '+ ' .. name
-  endif
-  return name
-endfunction
+		s ..= ' %{g:TabLabel(' .. (tab) .. ')} '
+	endfor
 
+	s ..= '%#TabLineFill#%T'
 
-function! MyTabLine()
-  let s = ''
-  for i in range(tabpagenr('$'))
-    let tab = i + 1
-    if tab == tabpagenr()
-      let s ..= '%#TabLineSel#'
-      let s ..= '[ %{MyTabLabel(' .. (tab) .. ')} ]'
-    else
-      let s ..= '%#TabLine#'
-      let s ..= '  %{MyTabLabel(' .. (tab) .. ')}  '
-    endif
-  
-  endfor
-  
-  let s ..= '%#TabLineFill#%T'
-  
-  return s
-endfunction
+	return s
+enddef
+
+set tabline=%!g:TabLine()
+
+packadd lsp
+packadd vimcomplete
 
 
-set tabline=%!MyTabLine()
+var servers: list<dict<any>> = []
+
+if executable("pyright-langserver")
+	add(servers, {
+		name: 'pyright',
+		filetype: 'python',
+		path: exepath('pyright-langserver'),
+		args: ['--stdio'],
+		workspaceConfig: {
+			python: {
+				pythonPath: exepath('python'),
+			}
+		},
+	})
+endif
+
+if executable("typescript-language-server")
+	add(servers, {
+		name: 'tsserver',
+		filetype: ['javascript', 'typescript'],
+		path: exepath('typescript-language-server'),
+		args: ['--stdio']
+	})
+endif
+
+call LspAddServer(servers)
+
+var options = {
+	completor: { noselect: false, noNewlineInCompletion: true }
+}
+
+autocmd VimEnter * g:VimCompleteOptionsSet(options)
 
