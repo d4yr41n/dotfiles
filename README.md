@@ -9,5 +9,5 @@
 - Text editor: [vim](https://github.com/vim/vim)
 - Shell: [bash](https://git.savannah.gnu.org/cgit/bash.git)
 
-![screenshot](screenshot.png)
+![screen](screen.gif)
 

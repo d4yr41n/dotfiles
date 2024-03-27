@@ -18,8 +18,16 @@ family = "Fantasque Sans Mono"
 style = "Italic"
 
 [colors.primary]
-background = "#0f0f0f"
+background = "#1f1f1f"
 foreground = "#ffffff"
+
+[colors.bright]
+black = "#3f3f3f"
+white = "#7f7f7f"
+
+[colors.selection]
+background = "#7f7f7f"
+text = "#ffffff"
 
 [cursor.style]
 shape = "Underline"

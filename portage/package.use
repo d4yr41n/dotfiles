@@ -15,3 +15,4 @@ x11-libs/cairo X
 x11-libs/gtk+ wayland
 x11-terms/alacritty -X wayland
 x11-libs/gdk-pixbuf jpeg
+media-sound/cava alsa

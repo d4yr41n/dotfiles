@@ -1,5 +1,5 @@
 font="Fantasque Sans Mono 19"
-bg="#0f0f0f"
+bg="#3f3f3f"
 fg="#ffffff"
 
 
@@ -13,27 +13,27 @@ status() {
 	network=$(iwctl station wlan0 show | awk 'NR==7 {print $3}')
 	ram=$(free --mega | awk 'NR==2 {print $3 "/" $2}')
 	time=$(date +%R)
-	current=$(mpc current)
+	mpd=$(mpc current)
 	music=$(echo "${current%.*}")
 	volume=$(amixer get Master | awk -F"[][]" '/Mono:/{print $2}')
-	echo "$music  NET $network  RAM $ram  VOL $volume  BAT $battery  $time "
+	echo " NET $network  RAM $ram  VOL $volume  BAT $battery  $time "
 }
 
 status_loop() {
 	while true; do
 		status
 		sleep 2
-	done
+	done 
 }
 
+
 init() {
-	swaybg -i wallpapers/wallpaper.jpg -m fit -c "#0f0f0f" &
-	desktop status_loop | ergo -f "$font" -b $bg -c $fg &
-	cat > .cache/dwl
+	# swaybg -i wallpapers/wallpaper.jpg -m fit -c "#0f0f0f" &
+	status_loop | ergo -f "$font" -b $bg -c $fg &
 }
 
 menu() {
-	echo -e "$1" | wmenu -f "$font" -N $bg -n $fg -S $fg -s $bg
+	echo -e "$1" | wmenu -f "$font" -N $bg -n $fg -S "#7f7f7f" -s $fg
 }
 
 
@@ -55,10 +55,18 @@ wallpaper() {
 }
 
 music() {
-	file=$(menu "$(mpc ls)")
-	mpc clear
-	mpc add "$file"
-	mpc play
+	cmd=$(menu "play\nstop\n$(mpc ls)")
+	if [ -n "${cmd}" ]; then
+		if [ ${cmd} = "play" ]; then
+			mpc play
+		elif [ ${cmd} = "stop" ]; then
+			mpc stop
+		else
+			mpc clear
+			mpc add "${cmd}"
+			mpc play
+		fi
+	fi
 }
 
 main() {
