@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+
+
 font="Fantasque Sans Mono 19"
 bg="#3f3f3f"
 fg="#ffffff"
@@ -7,29 +10,64 @@ screenshot() {
 	grim ~/screenshots/$(date +%s).png
 }
 
+tags=("TTY" "VIM" "WEB" "DOC" "SYS")
 
-status() {
-	battery=$(cat /sys/class/power_supply/BAT0/capacity)
-	network=$(iwctl station wlan0 show | awk 'NR==7 {print $3}')
-	ram=$(free --mega | awk 'NR==2 {print $3 "/" $2}')
-	time=$(date +%R)
-	mpd=$(mpc current)
-	music=$(echo "${current%.*}")
-	volume=$(amixer get Master | awk -F"[][]" '/Mono:/{print $2}')
-	echo " NET $network  RAM $ram  VOL $volume  BAT $battery  $time "
+space() {
+	for ((i=0;i<$1;i++)); do echo -n " "; done
 }
 
-status_loop() {
+dwl_status() {
+	count=1
+	dwl=
+	while IFS= read -r line; do
+		if [ "${count}" = "1" ]; then
+			title=$(echo "${line}" | awk '{print $3}')
+		fi
+		if [ "${count}" = "6" ]; then
+			selected=$(echo "${line}" | awk '{print $4}')
+			for i in ${!tags[@]}; do
+				mask=$((1<<i))
+				if ((selected & mask)); then
+					dwl+="# ${tags[$i]} #"
+				else
+					dwl+=" ${tags[$i]} "
+				fi
+			done
+		elif [ ${count} = 7 ]; then
+			layout=$(echo "${line}" | awk '{print $3}')
+			dwl+=" ${layout} # ${title}"
+			echo "${dwl}" > ~/.cache/status/dwl
+			sys=$(cat ~/.cache/status/sys)
+			echo "${dwl}$(space $((151 - ${#sys} - ${#dwl})))${sys}"
+			echo # extra
+			count=0
+			dwl=
+		fi
+		((count++))
+	done
+}
+
+sys_status() {
 	while true; do
-		status
-		sleep 2
-	done 
+		battery=$(cat /sys/class/power_supply/BAT0/capacity)
+		network=$(iwctl station wlan0 show | awk 'NR==7 {print $3}')
+		ram=$(free --mega | awk 'NR==2 {print $3 "/" $2}')
+		time=$(date +%R)
+		volume=$(amixer get Master | awk -F"[][]" '/Mono:/{print $2}')
+		sys="# NET $network | RAM $ram | VOL $volume | BAT $battery | $time "
+		echo "${sys}" > ~/.cache/status/sys
+		dwl=$(cat ~/.cache/status/dwl)
+		echo "${dwl}$(space $((151 - ${#sys} - ${#dwl})))${sys}"
+		sleep 3
+	done
 }
 
 
 init() {
-	# swaybg -i wallpapers/wallpaper.jpg -m fit -c "#0f0f0f" &
-	status_loop | ergo -f "$font" -b $bg -c $fg &
+	swaybg -i wallpapers/moon.png -m fit -c "#0f0f0f" &
+	mkdir -p ~/.cache/status
+	cat | dwl_status &
+	sys_status &
 }
 
 menu() {

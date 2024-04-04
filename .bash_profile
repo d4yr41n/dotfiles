@@ -11,6 +11,6 @@ if [ -z "${XDG_RUNTIME_DIR}" ]; then
 fi
 
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
-	dwl -s "desktop init"
+	dbus-run-session dwl -s "desktop init | ergo -F 'Fantasque Sans Mono 19' -b 3f3f3f"
 fi
 

@@ -21,6 +21,7 @@ highlight PmenuThumb guibg=#3f3f3f
 
 highlight ErrorMsg guibg=#1f1f1f guifg=#ff0000
 highlight SpellBad guibg=#1f1f1f guifg=#ff0000
+highlight SpellCap guibg=#1f1f1f guifg=#ff0000
 
 highlight LineNr guifg=#7f7f7f
 highlight CursorLineNr cterm=none guifg=#ffffff

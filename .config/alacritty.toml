@@ -36,6 +36,10 @@ blinking = "On"
 [cursor]
 blink_interval = 500
 blink_timeout = 0
+unfocused_hollow = false
+
+[window]
+opacity = 0.5
 
 [window.padding]
 x = 16

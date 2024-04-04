@@ -15,7 +15,7 @@ static const float fullscreen_bg[]         = COLOR(0xffffffff);
 static const int gap = 20;
 
 /* tagging - TAGCOUNT must be no greater than 31 */
-#define TAGCOUNT (9)
+#define TAGCOUNT (5)
 
 /* logging */
 static int log_level = WLR_ERROR;
