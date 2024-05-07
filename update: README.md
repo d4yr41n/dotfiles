@@ -9,5 +9,5 @@
 - Menu: [wmenu](https://sr.ht/~adnano/wmenu)
 - Terminal: [alacritty](https://github.com/alacritty/alacritty)
 - Text editor: [vim](https://github.com/vim/vim)
-- Shell: [bash](https://git.savannah.gnu.org/cgit/bash.git)
+- Shell: [ash](https://busybox.net)
 
