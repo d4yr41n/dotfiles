@@ -1,116 +1,24 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-
-font="Fantasque Sans Mono 19"
-bg="#3f3f3f"
-fg="#ffffff"
-
-
-screenshot() {
-	grim ~/screenshots/$(date +%s).png
-}
-
-tags=("TTY" "VIM" "WEB" "DOC" "SYS")
-
-space() {
-	for ((i=0;i<$1;i++)); do echo -n " "; done
-}
-
-dwl_status() {
-	count=1
-	dwl=
-	while IFS= read -r line; do
-		if [ "${count}" = "1" ]; then
-			title=$(echo "${line}" | awk '{print $3}')
-		fi
-		if [ "${count}" = "6" ]; then
-			selected=$(echo "${line}" | awk '{print $4}')
-			for i in ${!tags[@]}; do
-				mask=$((1<<i))
-				if ((selected & mask)); then
-					dwl+="# ${tags[$i]} #"
-				else
-					dwl+=" ${tags[$i]} "
-				fi
-			done
-		elif [ ${count} = 7 ]; then
-			layout=$(echo "${line}" | awk '{print $3}')
-			dwl+=" ${layout} # ${title}"
-			echo "${dwl}" > ~/.cache/status/dwl
-			sys=$(cat ~/.cache/status/sys)
-			echo "${dwl}$(space $((151 - ${#sys} - ${#dwl})))${sys}"
-			echo # extra
-			count=0
-			dwl=
-		fi
-		((count++))
-	done
-}
-
-sys_status() {
+status() {
 	while true; do
 		battery=$(cat /sys/class/power_supply/BAT0/capacity)
 		network=$(iwctl station wlan0 show | awk 'NR==7 {print $3}')
-		ram=$(free --mega | awk 'NR==2 {print $3 "/" $2}')
+		ram=$(free -m | awk 'NR==2 {print $3 "/" $2}')
 		time=$(date +%R)
 		volume=$(amixer get Master | awk -F"[][]" '/Mono:/{print $2}')
-		sys="# NET $network | RAM $ram | VOL $volume | BAT $battery | $time "
-		echo "${sys}" > ~/.cache/status/sys
-		dwl=$(cat ~/.cache/status/dwl)
-		echo "${dwl}$(space $((151 - ${#sys} - ${#dwl})))${sys}"
+		echo "NET $network | RAM ${ram}M | VOL $volume | BAT $battery% | $time "
 		sleep 3
 	done
 }
 
-
-init() {
-	swaybg -i wallpapers/moon.png -m fit -c "#0f0f0f" &
-	mkdir -p ~/.cache/status
-	cat | dwl_status &
-	sys_status &
-}
-
 menu() {
-	echo -e "$1" | wmenu -f "$font" -N $bg -n $fg -S "#7f7f7f" -s $fg
+	echo -e "chromium-browser\ntelegram-desktop" | wmenu -f "Spleen 15" -N "#3f3f3f" -n "#ffffff" -S "#7f7f7f" -s "#ffffff" | sh
 }
 
-
-launcher() {
-	menu "chromium-browser\ntelegram-desktop" | sh
+init()  {
+	desktop status | ergo -F 'Spleen 15' -b '#3f3f3f' &
+	exec <&-
 }
-
-
-wallpaper() {
-	if [ -d ~/wallpapers ]
-	then
-		file=$(menu "$(ls -1 ~/wallpapers)")
-		if [ -n "$file" ]; then
-			path=~/wallpapers/$file
-			pkill swaybg
-			swaybg -i $path -m fit &
-		fi
-	fi
-}
-
-music() {
-	cmd=$(menu "play\nstop\n$(mpc ls)")
-	if [ -n "${cmd}" ]; then
-		if [ ${cmd} = "play" ]; then
-			mpc play
-		elif [ ${cmd} = "stop" ]; then
-			mpc stop
-		else
-			mpc clear
-			mpc add "${cmd}"
-			mpc play
-		fi
-	fi
-}
-
-main() {
-	 $(menu "launcher\nwallpaper\nmusic")
-}
-
 
 $1
-

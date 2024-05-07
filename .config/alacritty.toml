@@ -1,29 +1,24 @@
 [font]
-size = 19
+size = 15
 
 [font.normal]
-family = "Fantasque Sans Mono"
-style = "Regular"
+family = "Spleen"
 
 [font.bold]
-family = "Fantasque Sans Mono"
-style = "Bold"
-
-[font.bold_italic]
-family = "Fantasque Sans Mono"
-style = "Bold Italic"
+family = "Spleen"
+style ="Bold"
 
 [font.italic]
-family = "Fantasque Sans Mono"
+family = "Spleen"
 style = "Italic"
+
+[font.bold_italic]
+family = "Spleen"
+style = "Bold Italic"
 
 [colors.primary]
 background = "#1f1f1f"
 foreground = "#ffffff"
-
-[colors.bright]
-black = "#3f3f3f"
-white = "#7f7f7f"
 
 [colors.selection]
 background = "#7f7f7f"

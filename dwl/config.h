@@ -5,27 +5,24 @@
 
 static const int sloppyfocus               = 1;  /* focus follows mouse */
 static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
-static const unsigned int borderpx         = 2;
+static const unsigned int borderpx         = 2;  /* border pixel of windows */
+static const unsigned int gaps             = 16;
 static const float rootcolor[]             = COLOR(0x1f1f1fff);
 static const float bordercolor[]           = COLOR(0x3f3f3fff);
 static const float focuscolor[]            = COLOR(0x7f7f7fff);
 static const float urgentcolor[]           = COLOR(0xff0000ff);
 static const float fullscreen_bg[]         = COLOR(0xffffffff);
 
-static const int gap = 20;
-
-/* tagging - TAGCOUNT must be no greater than 31 */
-#define TAGCOUNT (5)
+#define TAGCOUNT (3)
 
 /* logging */
 static int log_level = WLR_ERROR;
 
 static const Rule rules[] = {
-	/* app_id     title       tags mask     isfloating   monitor */
-	/* examples:
-	{ "Gimp",     NULL,       0,            1,           -1 },
-	*/
-	{ "firefox",  NULL,       1 << 8,       0,           -1 },
+	/* app_id             title       tags mask     isfloating   monitor */
+	/* examples: */
+	{ "Gimp_EXAMPLE",     NULL,       0,            1,           -1 }, /* Start on currently visible tags floating, not tiled */
+	{ "firefox_EXAMPLE",  NULL,       1 << 8,       0,           -1 }, /* Start on ONLY tag "9" */
 };
 
 /* layout(s) */
@@ -39,13 +36,18 @@ static const Layout layouts[] = {
 /* monitors */
 /* NOTE: ALWAYS add a fallback rule, even if you are completely sure it won't be used */
 static const MonitorRule monrules[] = {
-	{ NULL,       0.5f, 1,      1,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
+	/* name       mfact  nmaster scale layout       rotate/reflect                x    y */
+	/* example of a HiDPI laptop monitor:
+	{ "eDP-1",    0.5f,  1,      2,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
+	*/
+	/* defaults */
+	{ NULL,       0.55f, 1,      1,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
 };
 
 /* keyboard */
 static const struct xkb_rule_names xkb_rules = {
-	.options = "grp:alt_shift_toggle",
-	.layout = "us,ru"
+	.layout = "us,ru",
+	.options = "grp:alt_shift_toggle"
 };
 
 static const int repeat_rate = 25;
@@ -87,6 +89,7 @@ LIBINPUT_CONFIG_ACCEL_PROFILE_ADAPTIVE
 */
 static const enum libinput_config_accel_profile accel_profile = LIBINPUT_CONFIG_ACCEL_PROFILE_ADAPTIVE;
 static const double accel_speed = 0.0;
+
 /* You can choose between:
 LIBINPUT_CONFIG_TAP_MAP_LRM -- 1/2/3 finger tap maps to left/right/middle
 LIBINPUT_CONFIG_TAP_MAP_LMR -- 1/2/3 finger tap maps to left/middle/right
@@ -101,29 +104,23 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 	{ MODKEY|WLR_MODIFIER_SHIFT, SKEY,           tag,             {.ui = 1 << TAG} }, \
 	{ MODKEY|WLR_MODIFIER_CTRL|WLR_MODIFIER_SHIFT,SKEY,toggletag, {.ui = 1 << TAG} }
 
-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+/* commands */
 static const char *termcmd[] = { "alacritty", NULL };
-static const char *menucmd[] = { "desktop", "main", NULL };
-static const char *screenshotcmd[] = { "desktop", "screenshot", NULL };
-static const char *volumeupcmd[] = { "amixer", "set", "Master", "1%+", NULL };
-static const char *volumedowncmd[] = { "amixer", "set", "Master", "1%-", NULL };
-static const char *volumetogglecmd[] = { "amixer", "set", "Master", "toggle", NULL };
+static const char *menucmd[] = { "desktop", "menu", NULL };
 
 static const Key keys[] = {
-	{ NULL,                    XKB_KEY_XF86AudioMute,        spawn,  {.v = volumetogglecmd} },
-	{ NULL,                    XKB_KEY_XF86AudioLowerVolume, spawn,  {.v = volumedowncmd} },
-	{ NULL,                    XKB_KEY_XF86AudioRaiseVolume, spawn,  {.v = volumeupcmd} },
-	{ NULL,                    XKB_KEY_Print,      spawn,            {.v = screenshotcmd} },
+	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
+	/* modifier                  key                 function        argument */
 	{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_k,          focusstack,     {.i = -1} },
 	{ MODKEY,                    XKB_KEY_i,          incnmaster,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_d,          incnmaster,     {.i = -1} },
-	{ MODKEY,                    XKB_KEY_h,          setmfact,       {.f = -0.02f} },
-	{ MODKEY,                    XKB_KEY_l,          setmfact,       {.f = +0.02f} },
+	{ MODKEY,                    XKB_KEY_h,          setmfact,       {.f = -0.05f} },
+	{ MODKEY,                    XKB_KEY_l,          setmfact,       {.f = +0.05f} },
 	{ MODKEY,                    XKB_KEY_Return,     zoom,           {0} },
 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_C,          killclient,     {0} },
