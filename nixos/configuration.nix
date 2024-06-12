@@ -25,7 +25,7 @@
     (dwl.override {
       conf = builtins.readFile "${fetchurl {
         url = "https://raw.githubusercontent.com/d4yr41n/dotfiles/main/dwl/config.h";
-        sha256 = "b4a482426ef952e5e624e3561470f22fabf4ed86443d9f0e13330100aee243e3";
+        sha256 = "106c16c46c75cff8d512fb4d585944ca1e510cfbf16cc5cfeb0cecb9c5aff05d";
       }}";
     })
     wmenu
