@@ -2,12 +2,11 @@
 
 ![screen](screen.png)
 
-- OS: [Alpine](https://www.alpinelinux.org)
+- OS: [NixOS](https://nixos.org)
 - Compositor: [dwl](https://codeberg.org/dwl/dwl)
 - Status bar: [ergo](https://github.com/d4yr41n/ergo)
-- Font: [Spleen](https://github.com/fcambus/spleen)
+- Font: [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans)
 - Menu: [wmenu](https://sr.ht/~adnano/wmenu)
 - Terminal: [alacritty](https://github.com/alacritty/alacritty)
-- Text editor: [vim](https://github.com/vim/vim)
-- Shell: [ash](https://busybox.net)
+- Text editor: [helix](https://github.com/helix-editor/helix)
 

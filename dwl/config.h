@@ -7,11 +7,11 @@ static const int sloppyfocus               = 1;  /* focus follows mouse */
 static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
 static const unsigned int borderpx         = 2;  /* border pixel of windows */
 static const unsigned int gaps             = 16;
-static const float rootcolor[]             = COLOR(0x1f1f1fff);
-static const float bordercolor[]           = COLOR(0x3f3f3fff);
-static const float focuscolor[]            = COLOR(0x7f7f7fff);
+static const float rootcolor[]             = COLOR(0x0f0f0fff);
+static const float bordercolor[]           = COLOR(0x1f1f1fff);
+static const float focuscolor[]            = COLOR(0x3f3f3fff);
 static const float urgentcolor[]           = COLOR(0xff0000ff);
-static const float fullscreen_bg[]         = COLOR(0xffffffff);
+static const float fullscreen_bg[]         = COLOR(0x0f0f0fff);
 
 #define TAGCOUNT (3)
 
@@ -58,7 +58,7 @@ static const int tap_to_click = 1;
 static const int tap_and_drag = 1;
 static const int drag_lock = 1;
 static const int natural_scrolling = 0;
-static const int disable_while_typing = 1;
+static const int disable_while_typing = 0;
 static const int left_handed = 0;
 static const int middle_button_emulation = 0;
 /* You can choose between:
