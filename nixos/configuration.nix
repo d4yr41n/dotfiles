@@ -9,7 +9,6 @@
   networking.wireless.iwd.enable = true;
 
   security.polkit.enable = true;
-  time.timeZone = "Asia/Bishkek";
 
   users.users.dayrain = {
     isNormalUser = true;

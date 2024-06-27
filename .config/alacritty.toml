@@ -1,19 +1,19 @@
 [font]
-size = 15
+size = 19
 
 [font.normal]
-family = "Spleen"
+family = "Fantasque Sans Mono"
 
 [font.bold]
-family = "Spleen"
+family = "Fantasque Sans Mono"
 style ="Bold"
 
 [font.italic]
-family = "Spleen"
+family = "Fantasque Sans Mono"
 style = "Italic"
 
 [font.bold_italic]
-family = "Spleen"
+family = "Fantasque Sans Mono"
 style = "Bold Italic"
 
 [colors.primary]
@@ -34,9 +34,8 @@ blink_timeout = 0
 unfocused_hollow = false
 
 [window]
-opacity = 0.5
+opacity = 1
 
 [window.padding]
 x = 16
 y = 16
-

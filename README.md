@@ -1,6 +1,6 @@
 # dotfiles
 
-![screen](screen.png)
+![screen](screen.gif)
 
 - OS: [NixOS](https://nixos.org)
 - Compositor: [dwl](https://codeberg.org/dwl/dwl)

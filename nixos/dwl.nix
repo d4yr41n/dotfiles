@@ -54,7 +54,7 @@ stdenv.mkDerivation rec {
   postPatch = let
     configFile = "${fetchurl {
       url = "https://raw.githubusercontent.com/d4yr41n/dotfiles/main/dwl/config.h";
-      sha256 = "0pghmz2vkv0cxg7wav7izc6527na8icmhkgv2bazikvmdk21cv0h";
+      sha256 = "1r6whjzqlsvxkrf49sn3m859clhzj64naxmaaqcm9ynfxc0as7rl";
     }}";
   in "cp ${configFile} config.h";
 
