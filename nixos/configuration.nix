@@ -5,31 +5,40 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
   networking.hostName = "shell";
   networking.wireless.iwd.enable = true;
 
   security.polkit.enable = true;
+  time.timeZone = "Asia/Bishkek";
 
   users.users.dayrain = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
 
+  boot.consoleLogLevel = 3;
+  boot.kernelParams = [ "quiet" ];
+
+  services.getty.autologinUser = "dayrain";
+  services.tlp.enable = true;
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.systemPackages = with pkgs; [
     helix
+    wl-clipboard
     alacritty
     chromium
-    python3
     pyright
-    (dwl.override {
-      conf = builtins.readFile "${fetchurl {
-        url = "https://raw.githubusercontent.com/d4yr41n/dotfiles/main/dwl/config.h";
-        sha256 = "106c16c46c75cff8d512fb4d585944ca1e510cfbf16cc5cfeb0cecb9c5aff05d";
-      }}";
-    })
+    clang
+    pkg-config
+    raylib
     wmenu
     telegram-desktop
+    imv
+    mpv
+    grim
+    swaybg
+    (callPackage ./dwl.nix {})
     (callPackage ./ergo.nix {})
   ];
 
