@@ -8,6 +8,5 @@
 - Font: [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans)
 - Menu: [wmenu](https://sr.ht/~adnano/wmenu)
 - Terminal: [alacritty](https://github.com/alacritty/alacritty)
-- Shell: []
+- Shell: [loksh](https://github.com/dimkr/loksh)
 - Text editor: [helix](https://github.com/helix-editor/helix)
-
