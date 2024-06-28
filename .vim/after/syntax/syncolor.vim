@@ -1,2 +1,0 @@
-" Termux compatible
-colorscheme payne

@@ -13,13 +13,17 @@
   users.users.dayrain = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    shell = pkgs.loksh;
   };
 
   boot.consoleLogLevel = 3;
   boot.kernelParams = [ "quiet" ];
 
   services.getty.autologinUser = "dayrain";
-  services.tlp.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+  };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.systemPackages = with pkgs; [
