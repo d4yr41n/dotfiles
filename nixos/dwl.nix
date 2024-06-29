@@ -45,7 +45,7 @@ stdenv.mkDerivation rec {
   patches = [
     (fetchpatch {
       url = "https://raw.githubusercontent.com/d4yr41n/dotfiles/main/dwl/gaps.patch";
-      sha256 = "1h4f47zf4ar6jn3xya19qvbifnfssjmsk9dc9gj70slshlc9fvxx";
+      hash = "sha256-IiCxAfl2Jw2k87Lv5YvKGlb5/M9ee0xdwfcE0CYjBek=";
     })
   ];
 
@@ -54,7 +54,7 @@ stdenv.mkDerivation rec {
   postPatch = let
     configFile = "${fetchurl {
       url = "https://raw.githubusercontent.com/d4yr41n/dotfiles/main/dwl/config.h";
-      sha256 = "1r6whjzqlsvxkrf49sn3m859clhzj64naxmaaqcm9ynfxc0as7rl";
+      hash = "sha256-ks7h1BZzDOi9PHYP+Umk1WZWawrLsQgcmjuhPho0ePo=";
     }}";
   in "cp ${configFile} config.h";
 
