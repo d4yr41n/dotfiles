@@ -1,0 +1,3 @@
+.config/*
+!.config/alacritty.toml
+!.config/helix

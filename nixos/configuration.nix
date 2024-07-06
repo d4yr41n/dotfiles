@@ -41,8 +41,6 @@
     chromium
     pyright
     clang
-    pkg-config
-    raylib
     wmenu
     telegram-desktop
     imv
