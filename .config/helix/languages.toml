@@ -1,0 +1,8 @@
+[[language]]
+name = "python"
+language-servers = [ "pyright" ]
+roots = [ "" ]
+
+[[language]]
+name = "html"
+auto-format	= false
