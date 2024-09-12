@@ -1,0 +1,20 @@
+[font.normal]
+family = "Fira Code"
+
+[font]
+size = 16
+
+[colors.primary]
+background = "#1f1f1f"
+foreground = "#f1f1f1"
+
+[window]
+opacity = 0.8
+
+[cursor.style]
+shape = "Underline"
+blinking = "Always"
+
+[cursor]
+blink_interval = 500
+unfocused_hollow = false
