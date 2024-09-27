@@ -20,25 +20,25 @@ blink_interval = 500
 unfocused_hollow = false
 
 [colors.primary]
-background = '#2E3440'
-foreground = '#D8DEE9'
+background = '#1f1f1f'
+foreground = '#f1f1f1'
 
 [colors.normal]
-black   = '#3B4252'
-red     = '#BF616A'
-green   = '#A3BE8C'
-yellow  = '#EBCB8B'
-blue    = '#81A1C1'
-magenta = '#B48EAD'
-cyan    = '#88C0D0'
-white   = '#E5E9F0'
+black   = '#ffffff'
+red     = '#ffffff'
+green   = '#ffffff'
+yellow  = '#ffffff'
+blue    = '#ffffff'
+magenta = '#ffffff'
+cyan    = '#ffffff'
+white   = '#ffffff'
 
 [colors.bright]
-black   = '#4C566A'
-red     = '#BF616A'
-green   = '#A3BE8C'
-yellow  = '#EBCB8B'
-blue    = '#81A1C1'
-magenta = '#B48EAD'
-cyan    = '#8FBCBB'
-white   = '#ECEFF4'
+black   = '#3f3f3f'
+red     = '#ffffff'
+green   = '#ffffff'
+yellow  = '#ffffff'
+blue    = '#ffffff'
+magenta = '#ffffff'
+cyan    = '#ffffff'
+white   = '#ffffff'

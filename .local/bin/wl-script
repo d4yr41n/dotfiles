@@ -28,20 +28,25 @@ init() {
   $(cat /sys/class/power_supply/BAT0/capacity)% \
  $(date '+%a, %b %d, %R') "
 		sleep 5
-	done | ergo -b 3b4252 -f d8dee9 -F "Fira Code 16" &
+	done | ergo -b 1f1f1f -f f1f1f1 -F "Fira Code 16" &
 	swaybg -i ~/wallpapers/wallpaper.svg &
 	exec <&-
 }
 
 menu() {
-	cmd=$(echo "   telegram |   chromium |   discord |   wallpaper |   poweroff |    reboot" |
-	ring -f "Fira Code 16" -N 3b4252 -S 4c566a -n d8dee9)
+	cmd=$(echo -e "   telegram\n   chromium\n   wallpapers \n   poweroff\n   reboot" |
+	ring -f "Fira Code 16" -N 3f3f3f -S 5f5f5f -n f1f1f1 -s f1f1f1)
 	case $cmd in
 		*telegram*)
 			telegram-desktop &
 			;;
 		*chromium*)
 			chromium &
+			;;
+		*wallpapers*)
+			wallpaper=$(for i in $(ls ~/wallpapers); do echo " $i "; done | ring -f "Fira Code 16" -N 3b4252 -S 4c566a -n d8dee9)
+			pkill swaybg
+			swaybg -i ~/wallpapers/$(echo ${wallpaper} | xargs)
 			;;
 		*poweroff*)
 			poweroff
