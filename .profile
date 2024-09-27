@@ -1,8 +1,9 @@
 export PS1="\w > "
-alias vi=helix
+export PATH=${PATH}:~/.local/bin
 alias doas="doas "
+alias vi=helix
 complete -cf doas
 
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  wayfire &> /dev/null
+  dwl -s "wl-script init"
 fi

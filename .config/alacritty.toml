@@ -4,12 +4,12 @@ family = "Fira Code"
 [font]
 size = 16
 
-[colors.primary]
-background = "#1f1f1f"
-foreground = "#f1f1f1"
+# [window]
+# opacity = 1.0
 
-[window]
-opacity = 0.8
+[window.padding]
+x = 16
+y = 16
 
 [cursor.style]
 shape = "Underline"
@@ -18,3 +18,27 @@ blinking = "Always"
 [cursor]
 blink_interval = 500
 unfocused_hollow = false
+
+[colors.primary]
+background = '#2E3440'
+foreground = '#D8DEE9'
+
+[colors.normal]
+black   = '#3B4252'
+red     = '#BF616A'
+green   = '#A3BE8C'
+yellow  = '#EBCB8B'
+blue    = '#81A1C1'
+magenta = '#B48EAD'
+cyan    = '#88C0D0'
+white   = '#E5E9F0'
+
+[colors.bright]
+black   = '#4C566A'
+red     = '#BF616A'
+green   = '#A3BE8C'
+yellow  = '#EBCB8B'
+blue    = '#81A1C1'
+magenta = '#B48EAD'
+cyan    = '#8FBCBB'
+white   = '#ECEFF4'
