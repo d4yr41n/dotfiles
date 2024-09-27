@@ -1,0 +1,55 @@
+volume_up() {
+	amixer set Master 1%+
+}
+
+volume_down() {
+	amixer set Master 1%-
+}
+
+light_up() {
+	brightnessctl set +1%
+}
+
+light_down() {
+	brightnessctl set 1%-
+}
+
+screenshot() {
+	grim ~/screenshots/$(date +%s).png
+}
+
+init() {
+	while true;
+	do
+		echo "  $(iwctl station wlan0 show | awk '/network/{ print $3  }') \
+  $(free --mega | awk 'NR==2 { printf "%s/%s", $3, $2 }') \
+  $(brightnessctl -m | awk -F"," '{ print $4 }') \
+  $(amixer get Master | awk -F"[][]" '/Mono:/{ print $2 }') \
+  $(cat /sys/class/power_supply/BAT0/capacity)% \
+ $(date '+%a, %b %d, %R') "
+		sleep 5
+	done | ergo -b 3b4252 -f d8dee9 -F "Fira Code 16" &
+	swaybg -i ~/wallpapers/wallpaper.svg &
+	exec <&-
+}
+
+menu() {
+	cmd=$(echo "   telegram |   chromium |   discord |   wallpaper |   poweroff |    reboot" |
+	ring -f "Fira Code 16" -N 3b4252 -S 4c566a -n d8dee9)
+	case $cmd in
+		*telegram*)
+			telegram-desktop &
+			;;
+		*chromium*)
+			chromium &
+			;;
+		*poweroff*)
+			poweroff
+			;;
+		*reboot*)
+			reboot
+			;;
+	esac
+}
+
+$1
