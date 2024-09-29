@@ -4,8 +4,8 @@ family = "Fira Code"
 [font]
 size = 16
 
-# [window]
-# opacity = 1.0
+[window]
+opacity = 0.5
 
 [window.padding]
 x = 16
@@ -21,24 +21,24 @@ unfocused_hollow = false
 
 [colors.primary]
 background = '#1f1f1f'
-foreground = '#f1f1f1'
+foreground = '#efefef'
 
 [colors.normal]
-black   = '#ffffff'
-red     = '#ffffff'
-green   = '#ffffff'
-yellow  = '#ffffff'
-blue    = '#ffffff'
-magenta = '#ffffff'
-cyan    = '#ffffff'
-white   = '#ffffff'
+black   = '#1f1f1f'
+red     = '#efefef'
+green   = '#7fef1f'
+yellow  = '#ef7f3f'
+blue    = '#efefef'
+magenta = '#efefef'
+cyan    = '#efefef'
+white   = '#efefef'
 
 [colors.bright]
-black   = '#3f3f3f'
-red     = '#ffffff'
-green   = '#ffffff'
-yellow  = '#ffffff'
-blue    = '#ffffff'
-magenta = '#ffffff'
-cyan    = '#ffffff'
-white   = '#ffffff'
+black   = '#7f7f7f'
+red     = '#efefef'
+green   = '#7fef1f'
+yellow  = '#ef7f3f'
+blue    = '#3f7fef'
+magenta = '#ef1f7f'
+cyan    = '#efefef'
+white   = '#efefef'

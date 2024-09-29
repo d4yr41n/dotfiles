@@ -6,9 +6,10 @@
 static const int sloppyfocus               = 1;
 static const int bypass_surface_visibility = 0;
 static const unsigned int borderpx         = 2;
+static const unsigned int gaps             = 16;
 static const float rootcolor[]             = COLOR(0x1f1f1fff);
 static const float bordercolor[]           = COLOR(0x3f3f3fff);
-static const float focuscolor[]            = COLOR(0x5f5f5fff);
+static const float focuscolor[]            = COLOR(0x7f7f7fff);
 static const float urgentcolor[]           = COLOR(0xff0000ff);
 static const float fullscreen_bg[]         = COLOR(0x1f1f1fff);
 
