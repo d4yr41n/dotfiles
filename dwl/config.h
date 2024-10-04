@@ -13,7 +13,7 @@ static const float focuscolor[]            = COLOR(0x7f7f7fff);
 static const float urgentcolor[]           = COLOR(0xff0000ff);
 static const float fullscreen_bg[]         = COLOR(0x1f1f1fff);
 
-#define TAGCOUNT (9)
+#define TAGCOUNT (5)
 
 static int log_level = WLR_ERROR;
 

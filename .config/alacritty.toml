@@ -1,5 +1,5 @@
 [font.normal]
-family = "Fira Code"
+family = "Fira Mono"
 
 [font]
 size = 16
@@ -24,21 +24,20 @@ background = '#1f1f1f'
 foreground = '#efefef'
 
 [colors.normal]
-black   = '#1f1f1f'
-red     = '#efefef'
-green   = '#7fef1f'
+black   = '#efefef'
+red     = '#7f3fef'
+green   = '#7fef3f'
 yellow  = '#ef7f3f'
-blue    = '#efefef'
-magenta = '#efefef'
-cyan    = '#efefef'
+blue    = '#3f7fef'
+magenta = '#ef3f7f'
 white   = '#efefef'
 
 [colors.bright]
 black   = '#7f7f7f'
-red     = '#efefef'
-green   = '#7fef1f'
+red     = '#7f3fef'
+green   = '#7fef3f'
 yellow  = '#ef7f3f'
 blue    = '#3f7fef'
-magenta = '#ef1f7f'
-cyan    = '#efefef'
+magenta = '#ef3f7f'
+cyan    = '#3fef7f'
 white   = '#efefef'

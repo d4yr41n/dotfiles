@@ -1,6 +1,11 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080">
-  <rect x="0" y="0" width="1920" height="1080" fill="#2e3440"/>
-  <circle r="140" cx="960" cy="540" fill="none" stroke="#81a1c1" stroke-width="10" />
-  <circle r="40" cx="960" cy="540" fill="#81a1c1" />
-  <circle r="20" cx="960" cy="400" fill="#81a1c1" />
+  <rect x="0" y="0" width="1920" height="1080" fill="#1f1f1f" />
+  <circle r="140" cx="960" cy="540" fill="none" stroke="#3f7fef" stroke-width="10" />
+  <circle r="30" cx="960" cy="540" fill="#3f7fef" />
+  <circle r="20" cx="839" cy="610" fill="#3f7fef" />
+  <circle r="20" cx="1081" cy="610" fill="#3f7fef" />
+  <circle r="20" cx="960" cy="400" fill="#3f7fef" />
+  <line x1="960" y1="400" x2="839" y2="610" stroke="#3f7fef" stroke-width="10" />
+  <line x1="839" y1="610" x2="1081" y2="610" stroke="#3f7fef" stroke-width="10" />
+  <line x1="1081" y1="610" x2="960" y2="400" stroke="#3f7fef" stroke-width="10" />
 </svg>
