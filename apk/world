@@ -9,6 +9,7 @@ doas
 git
 grim
 helix
+imv
 iwd
 libinput-dev
 librsvg
@@ -22,6 +23,7 @@ pango-dev
 patch
 seatd
 swaybg
+telegram-desktop
 udev
 wayland-dev
 wayland-protocols
