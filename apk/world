@@ -27,4 +27,5 @@ telegram-desktop
 udev
 wayland-dev
 wayland-protocols
+wl-clipboard
 wlroots-dev

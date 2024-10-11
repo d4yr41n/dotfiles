@@ -40,7 +40,7 @@ proxy() {
 				done
 				;;
 			*title*)
-				title=$(echo $line | cut -d ' ' -f 3)
+				title="$(echo "${line}" | cut -d ' ' -f 3-)"
 				;;
 			*layout*)
 				layout=$(echo $line | cut -d ' ' -f 3)
