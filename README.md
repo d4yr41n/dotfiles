@@ -7,7 +7,8 @@
 - Menu: [Ring](https://github.com/d4yr41n/wayne/tree/main/ring)
 - Terminal: [Alacritty](https://github.com/alacritty/alacritty)
 - Text editor: [Helix](https://github.com/helix-editor/helix)
-- Theme: [Log2](https://github.com/d4yr41n/log2)
+- Theme: [Payne](https://github.com/d4yr41n/payne)
+- File explorer: [Myers](https://github.com/d4yr41n/myers)
 - Browser: [Chromium](https://github.com/chromium/chromium)
 - Shell: [Ash](https://busybox.net)
 
