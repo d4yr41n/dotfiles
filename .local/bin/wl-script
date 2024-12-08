@@ -21,7 +21,7 @@ light_down() {
 }
 
 screenshot() {
-	grim ~/screenshots/$(date +%s).png
+	grim -g "$(slurp)" ~/screenshots/$(date +%s).png
 }
 
 proxy() {

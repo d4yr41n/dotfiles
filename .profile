@@ -1,5 +1,6 @@
 export PS1="\w > "
 export PATH=${PATH}:~/.local/bin
+export EDITOR=hx
 
 if [ -z "${XDG_RUNTIME_DIR}" ]; then
 	export XDG_RUNTIME_DIR=/tmp/$(id -u)-runtime-dir
