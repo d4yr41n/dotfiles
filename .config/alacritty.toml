@@ -1,11 +1,8 @@
 [font.normal]
-family = "Fira Mono"
+family = "Commit Mono"
 
 [font]
 size = 16
-
-# [window]
-# opacity = 1.0
 
 [window.padding]
 x = 16
@@ -20,25 +17,25 @@ blink_interval = 500
 unfocused_hollow = false
 
 [colors.primary]
-background = '#1f1f1f'
-foreground = '#efefef'
+background = "#0f0f0f"
+foreground = "#efefef"
 
 [colors.normal]
-black   = '#efefef'
-magenta = '#ef3f7f'
-green   = '#7fef3f'
-yellow  = '#ef7f3f'
-blue    = '#3f7fef'
-red     = '#efefef'
-cyan    = '#3fef7f'
-white   = '#efefef'
+black   = "#0f0f0f"
+magenta = "#ef0f7f"
+green   = "#7fef0f"
+yellow  = "#ef7f0f"
+blue    = "#0f7fef"
+red     = "#0fef7f"
+cyan    = "#7f0fef"
+white   = "#efefef"
 
 [colors.bright]
-black   = '#3f3f3f'
-magenta = '#ef3f7f'
-green   = '#7fef3f'
-yellow  = '#ef7f3f'
-blue    = '#3f7fef'
-red     = '#efefef'
-cyan    = '#3fef7f'
-white   = '#efefef'
+black   = "#0f0f0f"
+magenta = "#ef0f7f"
+green   = "#7fef0f"
+yellow  = "#ef7f0f"
+blue    = "#0f7fef"
+red     = "#0fef7f"
+cyan    = "#7f0fef"
+white   = "#efefef"

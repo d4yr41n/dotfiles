@@ -1,6 +1,6 @@
 export PS1="\w > "
 export PATH=${PATH}:~/.local/bin
-export EDITOR=hx
+export EDITOR=vim
 
 if [ -z "${XDG_RUNTIME_DIR}" ]; then
 	export XDG_RUNTIME_DIR=/tmp/$(id -u)-runtime-dir
@@ -11,5 +11,5 @@ if [ -z "${XDG_RUNTIME_DIR}" ]; then
 fi
 
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
-  dwl -s "wl-script init"
+	dwl -s "wl-script init"
 fi
