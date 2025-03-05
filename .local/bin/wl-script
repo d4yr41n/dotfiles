@@ -1,97 +1,64 @@
 #!/bin/sh
 
-FONT="Fira Mono 16"
-BG="3f3f3f"
-FG="efefef"
-
-volume_up() {
-	amixer set Master 1%+
+get_tag_name() {
+	case $1 in
+		1) echo TTY ;;
+		2) echo VIM ;;
+		3) echo WWW ;;
+	esac
 }
 
-volume_down() {
-	amixer set Master 1%-
+print() {
+	dwl=$(cat ~/.cache/dwl)
+	info=$(cat ~/.cache/info)
+	formatted=$(echo -n "${dwl}" | tr -d ^ | wc -m)
+	space="$(printf "%109s")"
+	echo "${dwl} ^${space}^${info}"
 }
 
-light_up() {
-	brightnessctl set +1%
+timer() {
+	while true; do
+		out=$(cat ~/.cache/dwl)
+		date=$(date +%R)
+		bat=$(cat /sys/class/power_supply/BAT0/capacity)
+		echo "  BAT ${bat} | ${date}  " > ~/.cache/info
+		print
+		sleep 3
+	done
 }
 
-light_down() {
-	brightnessctl set 1%-
-}
-
-screenshot() {
-	grim -g "$(slurp)" ~/screenshots/$(date +%s).png
-}
-
-proxy() {
+stdin() {
 	while read line; do
 		case $line in
 			*tags*)
 				tags=
 				select=$(echo $line | cut -d ' ' -f 4)
-				for tag in 1 2 3 4 5; do
+				for tag in 1 2 3; do
 					mask=$((1 << $((tag - 1))))
+					tag=$(get_tag_name ${tag})
 					if [ $(($select & $mask)) -ne 0 ]; then
-						tags="${tags}[${tag}]"
+						tags="${tags}^ ${tag} ^"
 					else
 						tags="${tags} ${tag} "
 					fi
 				done
 				;;
-			*title*)
-				title="$(echo "${line}" | cut -d ' ' -f 3-)"
-				;;
+			# *title*)
+			# 	title=$(echo ${line} | cut -d ' ' -f 3-)
+			# 	;;
 			*layout*)
 				layout=$(echo $line | cut -d ' ' -f 3)
-				out=" [ ${tags} ] [ ${layout} ]"
-				if [ -n "${title}" ]; then
-					out="${out} [ ${title} ]"
-				fi
-				echo "${out}"
+				echo "${tags} ${layout}" > ~/.cache/dwl
+				print
 				;;
 		esac
-	done < /dev/stdin
-
+	done
 }
 
-init() {
-	while true;
-	do
-		echo "[ NET $(iwctl station wlan0 show | awk '/network/{ print $3  }') ] \
-[ RAM $(free -m | awk 'NR==2 { printf "%s/%s", $3, $2 }') ] \
-[ LGT $(($(cat /sys/class/backlight/amdgpu_bl1/brightness)00 / 255)) ] \
-[ VOL $(amixer get Master | awk -F"[][]" '/Mono:/{ print $2 }') ] \
-[ BAT $(cat /sys/class/power_supply/BAT0/capacity)% ] \
-[ $(date '+%a, %b %d, %R') ] "
-		sleep 5
-	done | ergo -b $BG -f $FG -F "${FONT}" -B -r &
-	swaybg -i ~/wallpapers/wallpaper.svg &
-	proxy | ergo -F "${FONT}" -b $BG -f $FG
+msg() {
+	timer &
+	stdin
 }
 
-menu() {
-	cmd=$(echo -e " chromium \n telegram \n music \n discord \n wallpapers \n poweroff \n reboot " |
-	ring -f "${FONT}" -N $BG -S 7f7f7f -n $FG -s $FG)
-	case $cmd in
-		*telegram*)
-			telegram-desktop &
-			;;
-		*chromium*)
-			chromium &
-			;;
-		*wallpapers*)
-			wallpaper=$(for i in $(ls ~/wallpapers); do echo " $i "; done | ring -f "${FONT}" -N 3f3f3f -S 7f7f7f -n efefef -s efefef)
-			pkill swaybg
-			swaybg -i ~/wallpapers/$(echo ${wallpaper} | xargs)
-			;;
-		*poweroff*)
-			poweroff
-			;;
-		*reboot*)
-			reboot
-			;;
-	esac
-}
-
-$1
+# swaybg -i ~/wallpapers/wallpaper.svg &
+msg | ergo -f "Commit Mono 16" -N 0f0f0f -n efefef -S 7f0fef -s efefef
