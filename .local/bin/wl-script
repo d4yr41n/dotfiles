@@ -11,9 +11,8 @@ get_tag_name() {
 print() {
 	dwl=$(cat ~/.cache/dwl)
 	info=$(cat ~/.cache/info)
-	formatted=$(echo -n "${dwl}" | tr -d ^ | ~/len)
-	ghost=$(echo "${dwl}" | grep -o "‎" | wc -l)
-	space="$(printf "%*s" $((147 - ${formatted} - ${#info} + ${ghost})))"
+	formatted=$(echo -n "${dwl}" | tr -d ^ | wc -m)
+	space="$(printf "%*s" $((147 - ${formatted} - ${#info})))"
 	echo "${dwl} ${space}^${info}"
 }
 
@@ -45,7 +44,7 @@ stdin() {
 				done
 				;;
 			*title*)
-				title="$(echo "${line}" | cut -d ' ' -f 3-"")"
+				title="$(echo "${line}" | cut -d ' ' -f 3- | tr -cd '\0-\177')"
 				#title="Шервуд - (12595)"
 				;;
 			*layout*)
