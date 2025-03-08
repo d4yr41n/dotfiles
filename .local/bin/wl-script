@@ -2,18 +2,19 @@
 
 get_tag_name() {
 	case $1 in
-		1) echo TTY ;;
-		2) echo VIM ;;
-		3) echo WWW ;;
+		1) echo SH ;;
+		2) echo VI ;;
+		3) echo W3 ;;
 	esac
 }
 
 print() {
 	dwl=$(cat ~/.cache/dwl)
 	info=$(cat ~/.cache/info)
-	formatted=$(echo -n "${dwl}" | tr -d ^ | wc -m)
-	space="$(printf "%109s")"
-	echo "${dwl} ^${space}^${info}"
+	formatted=$(echo -n "${dwl}" | tr -d ^ | ~/len)
+	ghost=$(echo "${dwl}" | grep -o "‎" | wc -l)
+	space="$(printf "%*s" $((147 - ${formatted} - ${#info} + ${ghost})))"
+	echo "${dwl} ${space}^${info}"
 }
 
 timer() {
@@ -43,12 +44,13 @@ stdin() {
 					fi
 				done
 				;;
-			# *title*)
-			# 	title=$(echo ${line} | cut -d ' ' -f 3-)
-			# 	;;
+			*title*)
+				title="$(echo "${line}" | cut -d ' ' -f 3-"")"
+				#title="Шервуд - (12595)"
+				;;
 			*layout*)
 				layout=$(echo $line | cut -d ' ' -f 3)
-				echo "${tags} ${layout}" > ~/.cache/dwl
+				echo "${tags} ${layout} ^ ${title}" > ~/.cache/dwl
 				print
 				;;
 		esac
@@ -61,4 +63,4 @@ msg() {
 }
 
 # swaybg -i ~/wallpapers/wallpaper.svg &
-msg | ergo -f "Commit Mono 16" -N 0f0f0f -n efefef -S 7f0fef -s efefef
+msg | ergo -f "JetBrains Mono 16" -N 1f1f28 -n dcd7ba -S 727169 -s dcd7ba

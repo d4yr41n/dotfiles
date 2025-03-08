@@ -1,13 +1,12 @@
 adwaita-icon-theme
-alacritty
 alpine-base
 btrfs-progs
 cairo-dev
 chromium
-clang
 clang19-extra-tools
 doas
-font-commit-mono
+font-jetbrains-mono
+foot
 gdb
 git
 grim
@@ -16,6 +15,7 @@ iwd
 kakoune
 linux-edge
 make
+mpv
 openresolv
 pango-dev
 patch
